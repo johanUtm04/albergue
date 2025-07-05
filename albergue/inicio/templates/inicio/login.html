@@ -1,30 +1,42 @@
-{% load static %}
-
-{% block head_extra %}
-    <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
-{% endblock %}
-
-{% block contenido %}
+{% load static %} {% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
+{% endblock %} {% block contenido %}
 <div class="login-container">
-    <div class="login-box">
-        <h1 class="login-title">Iniciar Sesión</h1>
-        <p class="login-subtitle">Inicia sesión para continuar</p>
+  <div class="login-box">
+    <h1 class="login-title">Iniciar Sesión</h1>
+    <p class="login-subtitle">Inicia sesión para continuar</p>
 
+    <form class="login-form" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-input"
+          placeholder="tuemail@ejemplo.com"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-input"
+          placeholder="*****"
+          required
+        />
+      </div>
+      <button type="submit" class="login-button">Iniciar Sesión</button>
+    </form>
 
-        <form class="login-form" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="tuemail@ejemplo.com" required>
-            </div>
-            <div class="form-group">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" name="password" class="form-input" placeholder="*****" required>
-            </div>
-            <button type="submit" class="login-button">Iniciar Sesión</button>
-        </form>
-
-        <p class="signup-link">¿NO TIENES UNA CUENTA? <a href="{% url 'register' %}">REGÍSTRATE</a></p>
-    </div>
+    <p class="signup-link">
+      ¿NO TIENES UNA CUENTA? JAJAJA
+      <a href="{% url 'register' %}">REGÍSTRATE</a>
+    </p>
+  </div>
 </div>
 {% endblock %}
