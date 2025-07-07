@@ -175,7 +175,7 @@ h4 {
     margin-top: 20px;
     display: flex;
     gap: 15px;
-    align-items: center;
+    justify-content: flex-end;
 }
 
 .btn-yellow {
@@ -187,6 +187,7 @@ h4 {
     font-size: 11px;
     letter-spacing: 1px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .btn-gray {
@@ -197,6 +198,8 @@ h4 {
     font-size: 11px;
     letter-spacing: 1px;
     font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-red {
@@ -207,7 +210,9 @@ h4 {
     font-size: 11px;
     letter-spacing: 1px;
     font-weight: bold;
-    color: white;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-black {
@@ -227,6 +232,12 @@ h4 {
     border-radius: 5px;
 }
 
+.search-and-button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 0px;
+}
 
 
 
