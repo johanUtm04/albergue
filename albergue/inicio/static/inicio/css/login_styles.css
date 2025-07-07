@@ -93,13 +93,13 @@ html, body {
     color: #666;
 }
 
-.signup-link a {
+.signup-link {
     color: #007bff; /* Color azul para el enlace de "REGISTRATE" */
     text-decoration: none;
     font-weight: bold;
 }
 
-.signup-link a:hover {
+.signup-link :hover {
     text-decoration: underline;
 }
 
@@ -188,6 +188,7 @@ h4 {
     letter-spacing: 1px;
     font-weight: bold;
     text-decoration: none;
+    display: inline-block;
 }
 
 .btn-gray {
@@ -215,6 +216,19 @@ h4 {
     cursor: pointer;
 }
 
+a.btn-red,
+a.btn-gray,
+a.btn-yellow {
+    color: rgb(0, 0, 0) !important;           /*  Fuerza color */
+    text-decoration: none !important;  /*  Sin subrayado */
+}
+
+a.btn-red:visited,
+a.btn-gray:visited,
+a.btn-yellow:visited {
+    color: rgb(0, 0, 0) !important;           /*  Fuerza color incluso si fue visitado */
+}
+
 .btn-black {
     background-color: #000;
     color: #fff;
@@ -240,6 +254,41 @@ h4 {
 }
 
 
+.detalle-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 40px;
+    gap: 40px;
+}
+
+.detalle-texto {
+    max-width: 65%;
+}
+
+.detalle-texto h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.detalle-texto p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.detalle-imagen img {
+    width: 250px;
+    height: auto;
+    border: 2px solid #000;
+}
+
+/* Botones al fondo */
+.detalle-botones {
+    margin-top: 60px;
+    display: flex;
+    gap: 20px;
+}
 
 /* Si hay un logo o más elementos en el encabezado, ajusta con flexbox */
 /*

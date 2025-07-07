@@ -30,8 +30,14 @@ def register_user(request):
 def pacientes(request):
     return render(request, 'inicio/pacientes.html')
 
-def editar(request):
-    return render(request, 'inicio/editarPaciente.html')
-
 def medicamentos(request):
     return render(request, 'inicio/medicamentos.html')
+
+def detallePaciente(request):
+    return render(request, 'inicio/detallePaciente.html')
+
+def medicamentos_admin(request):
+    return render(request, 'inicio/medicamentos_admin.html')
+
+def detalleMedicamento(request):
+    return render (request, 'inicio/detalleMedicamento.html')

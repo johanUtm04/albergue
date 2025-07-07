@@ -8,7 +8,9 @@ urlpatterns = [
     path('login/', views.login, name="Login"), # Nueva URL para el login
     path('register/', views.register_user, name = "register"),
     path('pacientes/', views.pacientes, name='pacientes'),
-    path('editar/', views.editar, name='Editar Paciente'),
     path('medicamentos/', views.medicamentos, name='medicamentos'),
+    path('detallePaciente/', views.detallePaciente, name='detallePaciente'),
+    path('medicamentos_admin/', views.medicamentos_admin, name='medicamentos_admin'),
+    path('detalleMedicamento/', views.detalleMedicamento, name='detalleMedicamento'),
 
 ]

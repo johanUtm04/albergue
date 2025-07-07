@@ -1,0 +1,43 @@
+<title>{%block titulo%} Detalle del paciente {%endblock%}</title>
+
+{% load static %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+{% endblock %}
+
+{% block contenido %}
+{% block nav %}
+<div class="header">
+    <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h1>
+    <div class="header-right">
+        <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
+        <a href="{% url 'pacientes' %}" style="text-decoration:none;">PACIENTES</a>
+        <a href="" style="text-decoration:none;">CERRAR SESIÓN</a>
+    </div>
+</div>
+{% endblock %}
+
+<h2>Historial Medico Completo</h2>
+
+<div class="detalle-container">
+    <div class="detalle-texto">
+        <h3>Paciente #N</h3>
+        <p>La escritura eficaz es un arte. Empezá usando palabras sencillas y cotidianas que las personas puedan entender fácilmente. Sé claro y directo. Mantené un flujo de ideas lógico e intentá ser conciso, a menos que estés escribiendo un artículo extenso.</p>
+
+        <p>Nuestras ideas tienen un propósito, así que elegí palabras que lo expresen con precisión.</p>
+
+        <p>La escritura eficaz es un arte. Empezá usando palabras sencillas y cotidianas que las personas puedan entender fácilmente. Sé claro y directo. Mantené un flujo de ideas lógico e intentá ser conciso, a menos que estés escribiendo un artículo extenso.</p>
+
+        <p>Nuestras ideas tienen un propósito, así que elegí palabras que lo expresen con precisión.</p>
+    </div>
+    <div class="detalle-imagen">
+        <img src="{% static 'inicio/img/paciente.jpg' %}" alt="Paciente" />
+    </div>
+</div>
+
+<div class="detalle-botones">
+    <button class="btn-gray">EDITAR</button>
+    <button class="btn-red">ELIMINAR</button>
+</div>
+{% endblock %}

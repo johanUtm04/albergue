@@ -1,4 +1,4 @@
-<title>{%block titulo%} Pacientes {%endblock%}</title>
+<title>{%block titulo%} Medicamentos {%endblock%}</title>
 
 {% load static %}
 
@@ -10,28 +10,29 @@
 
 {% block nav %}
 <div class="header">
-    <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h1>
+    <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h1>
     <div class="header-right">
-        <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
+        <a href="" style="text-decoration:none;">GESTIÓN DE RECURSOS</a>
+        <a href="" style="text-decoration:none;">INVENTARIO</a>
         <a href="" style="text-decoration:none;">CERRAR SESIÓN</a>
     </div>
 </div>
 {% endblock %}
 
-<h2>Bienvenido, Médico <br> Gestión de Pacientes</h2>
+<h2>Bienvenido, Administrador <br> Gestión de Medicamentos</h2>
 
 <div class="search-and-button">
     <input type="text" class="search-bar" placeholder="Buscar">
-    <a href="" class="btn-black">REGISTRAR NUEVO PACIENTE</a>
+    <a href="" class="btn-black">REGISTRAR NUEVOS MEDICAMENTOS</a>
 </div>
 
-<h4>Pacientes</h4>
+<h4>Medicamentos</h4>
 
 <div class="patient-card">
     <h3>Lorem</h3>
     <p>La escritura eficaz es un arte. Empezá usando palabras sencillas y cotidianas...</p>
     <div class="patient-actions">
-        <a href="{% url 'detallePaciente' %}" class="btn-yellow">VISTA COMPLETA</a>
+        <a href="{% url 'detalleMedicamento' %}" class="btn-yellow">VISTA COMPLETA</a>
         <button href="" class="btn-gray">EDITAR</button>
         <button class="btn-red">ELIMINAR</button>
     </div>
@@ -41,7 +42,7 @@
     <h3>Lorem</h3>
     <p>La escritura eficaz es un arte. Empezá usando palabras sencillas y cotidianas...</p>
     <div class="patient-actions">
-        <a href="{% url 'detallePaciente' %}" class="btn-yellow">VISTA COMPLETA</a>
+        <a href="detalleMedicamento" class="btn-yellow">VISTA COMPLETA</a>
         <button href="" class="btn-gray">EDITAR</button>
         <button class="btn-red">ELIMINAR</button>
     </div>
