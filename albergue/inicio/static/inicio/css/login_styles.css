@@ -1,12 +1,12 @@
 /* login_styles.css */
 
-/* Asegurarse de que el cuerpo y html ocupen toda la altura */
 html, body {
     height: 100%;
     margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif; /* Puedes usar la fuente que prefieras */
-    background-color: #f2f2f2; /* Color de fondo general, si aplica */
+    padding: 0 40px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: black
 }
 
 /* Contenedor principal del login para centrarlo */
@@ -15,7 +15,7 @@ html, body {
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 0px); /* Ajusta si tu encabezado/pie de página tienen altura fija */
-    background-color: #fff; /* El área principal es blanca */
+    background-color: #fff; 
 }
 
 /* La caja del formulario en sí */
@@ -103,8 +103,6 @@ html, body {
     text-decoration: underline;
 }
 
-/* Ajustes para el encabezado de tu "encabezado.html" si no lo modificaste antes */
-/* Asumiendo que tu encabezado.html tiene un div con clase 'header-top' o similar */
 .header-top {
     display: flex;
     justify-content: flex-end; /* Alinear a la derecha "ACERCA DE" */
@@ -120,8 +118,119 @@ html, body {
     font-weight: bold;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+h4 {
+    font-size: 19px;
+    margin-top: 30px;
+}
+
+.header-right {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.header-right a {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.patient-card {
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+}
+
+.patient-card h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.patient-card p {
+    font-size: 14px;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.patient-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-yellow {
+    background-color: #FFD93D;
+    border: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.btn-gray {
+    background-color: #d9d9d9;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.btn-red {
+    background-color: #ff5c5c;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-black {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: none;
+    text-decoration: none;
+}
+
+.search-bar {
+    border: 1px solid #ccc;
+    padding: 7px 10px;
+    border-radius: 5px;
+}
+
+
+
+
 /* Si hay un logo o más elementos en el encabezado, ajusta con flexbox */
-/* Ejemplo de cómo podría ser tu encabezado.html */
 /*
 <div class="header-top">
     <a href="#">ACERCA DE</a>

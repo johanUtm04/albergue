@@ -29,3 +29,6 @@ def register_user(request):
 
 def pacientes(request):
     return render(request, 'inicio/pacientes.html')
+
+def medicamentos(request):
+    return render(request, 'inicio/medicamentos.html')

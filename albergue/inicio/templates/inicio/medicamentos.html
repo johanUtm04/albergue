@@ -1,0 +1,51 @@
+{% load static %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+{% block nav %}
+<div class="header">
+    <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h1>
+    <div class="header-right">
+        <a href="{% url 'pacientes' %}" style="text-decoration:none;">PACIENTES</a>
+        <a href="" style="text-decoration:none;">CERRAR SESIÓN</a>
+    </div>
+</div>
+{% endblock %}
+
+<h2>Dispensación de medicamentos</h2>
+
+<h4>Historial de salidas</h4>
+
+<a href="" class="btn-black">REGISTRAR SALIDAS DE MEDICAMENTO</a>
+<div class="patient-card">
+    <div class="patient-content">
+        <h3>Lorem</h3>
+        <p>
+            La escritura eficaz es un arte. Empezá usando palabras sencillas y cotidianas que las personas puedan entender fácilmente.
+            Sé claro y directo. Mantené un flujo de ideas lógico e intentá ser conciso, a menos que estés escribiendo un artículo extenso.
+        </p>
+    </div>
+    <div class="patient-actions">
+        <button class="btn-gray">EDITAR</button>
+        <button class="btn-red">ELIMINAR</button>
+    </div>
+</div>
+
+<div class="patient-card">
+    <div class="patient-content">
+        <h3>Lorem</h3>
+        <p>
+            La escritura eficaz es un arte. Empezá usando palabras sencillas y cotidianas que las personas puedan entender fácilmente.
+            Sé claro y directo. Mantené un flujo de ideas lógico e intentá ser conciso, a menos que estés escribiendo un artículo extenso.
+        </p>
+    </div>
+    <div class="patient-actions">
+        <button class="btn-gray">EDITAR</button>
+        <button class="btn-red">ELIMINAR</button>
+    </div>
+</div>
+{% endblock %}
