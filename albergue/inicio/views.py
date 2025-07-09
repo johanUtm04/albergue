@@ -41,3 +41,15 @@ def medicamentos_admin(request):
 
 def detalleMedicamento(request):
     return render (request, 'inicio/detalleMedicamento.html')
+
+def editarPaciente(request):
+    return render (request, 'inicio/editarPaciente.html')
+
+def registrarPaciente(request):
+    return render (request, 'inicio/registrarPaciente.html')
+
+def editarMedicamento(request):
+    return render (request, 'inicio/editarMedicamento.html')
+
+def registrarMedicamento(request):
+    return render (request, 'inicio/registrarMedicamento.html')

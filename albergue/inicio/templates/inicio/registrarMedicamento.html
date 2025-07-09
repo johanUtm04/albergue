@@ -1,0 +1,48 @@
+<title>{%block titulo%} Registrar medicamento {%endblock%}</title>
+{% load static %} 
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
+{% endblock %} 
+
+{% block contenido %}
+<div class="login-container">
+    <div class="login-box">
+        <h1 class="login-title">Registrar Nuevo Medicamento</h1>
+
+    <form class="login-form" method="post">
+      {% csrf_token %}
+        <div class="form-group">
+            <label for="text" class="form-label">Nombre</label>
+            <input 
+            type="text" 
+            name="text" 
+            id="nombre" 
+            class="form-input" 
+            placeholder="Nombre del medicamento" 
+            required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <input 
+            type="text" 
+            name="descripcion" 
+            id="descripcion" 
+            class="form-input" 
+            placeholder="Descripción" 
+            required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_caducidad" class="form-label">Fecha de Caducidad</label>
+            <input 
+            type="date" 
+            name="fecha_caducidad" 
+            id="fecha_caducidad" 
+            class="form-input" 
+            required>
+        </div>
+        <button type="submit" class="login-button">Listo</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
