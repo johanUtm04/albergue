@@ -33,6 +33,12 @@ def pacientes(request):
 def medicamentos(request):
     return render(request, 'inicio/medicamentos.html')
 
+def inventario(request):
+    return render(request, 'inicio/inventario.html')
+
+def detalleInventario(request):
+    return render (request, 'inicio/detalleInventario.html')
+
 def detallePaciente(request):
     return render(request, 'inicio/detallePaciente.html')
 
