@@ -30,10 +30,6 @@ urlpatterns = [
     path('medicamentos/eliminar/<int:id>/', views_registro.eliminar_recursoMedico, name='eliminar_medicamento'),
 
 
-
-    path('recursos/', views_registros.lista_recursos, name='Lista_recursos'),
-    path('recursos/agregar/', views_registros.agregar_recurso, name='agregar_recurso'),
-
 #Seguridad y acceso
     path('users/', views_users.user_list, name='user_list'),
     path('users/create/', views_users.user_create, name='user_create'),

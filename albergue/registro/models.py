@@ -10,7 +10,7 @@ class Medico(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nombre
 
     class Meta:
@@ -30,7 +30,7 @@ class RecursoNoMedico(models.Model):
         verbose_name_plural = "Recursos"
         ordering = ["-created"]
 
-    def __str__(self):
+    def _str_(self):
         return self.nombre
 
 class RecursoMedico(models.Model):
