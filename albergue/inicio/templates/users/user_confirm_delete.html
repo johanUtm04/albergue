@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+
+<h2>Eliminar usuario</h2>
+<p>¿Estás seguro que quieres eliminar a <strong>{{ user.username }}</strong>?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn-red">Eliminar</button>
+    <a href="{% url 'user_list' %}" class="btn-gray" style="margin-left: 10px; padding: 10px 15px; border-radius: 10px;">Cancelar</a>
+</form>

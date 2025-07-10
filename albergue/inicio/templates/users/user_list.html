@@ -1,0 +1,31 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+
+<h2>Seguridad y Accesos</h2>
+<a href="{% url 'user_create' %}" class="btn-black">Crear nuevo usuario</a>
+
+<table style="width:100%; margin-top:20px; border-collapse: collapse;">
+    <thead>
+        <tr style="border-bottom: 2px solid #ccc;">
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr style="border-bottom: 1px solid #ccc;">
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <a href="{% url 'user_edit' user.id %}" class="btn-gray">Editar</a>
+                <a href="{% url 'user_delete' user.id %}" class="btn-red">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No hay usuarios registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,9 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+
+<h2>Formulario de Usuario</h2>
+<form method="post" style="max-width: 500px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-black" style="margin-top: 15px;">Guardar</button>
+</form>

@@ -5,6 +5,10 @@ from registro import views as views_registro
 
 from registro import views as views_registros
 
+#Seguridad y acceso
+from users import views as views_users
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.principal, name="Principal"),
@@ -27,8 +31,17 @@ urlpatterns = [
 
 
 
-    #path('recursos/', views_registros.lista_recursos, name='Lista_recursos'),
-    #path('recursos/agregar/', views_registros.agregar_recurso, name='agregar_recurso'),
+        path('recursos/', views_registros.lista_recursos, name='Lista_recursos'),
+    path('recursos/agregar/', views_registros.agregar_recurso, name='agregar_recurso'),
+
+#Seguridad y acceso
+    path('users/', views_users.user_list, name='user_list'),
+    path('users/create/', views_users.user_create, name='user_create'),
+    path('users/edit/<int:id>/', views_users.user_edit, name='user_edit'),
+    path('users/delete/<int:id>/', views_users.user_delete, name='user_delete'),
 ]
+
+
+
 
 
