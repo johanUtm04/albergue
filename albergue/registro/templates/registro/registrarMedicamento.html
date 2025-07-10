@@ -1,0 +1,62 @@
+<title>{%block titulo%} Registrar medicamento {%endblock%}</title>
+{% load static %} 
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
+{% endblock %} 
+
+{% block contenido %}
+<div class="login-container">
+    <div class="login-box">
+        <h1 class="login-title">Registrar Nuevo Medicamento</h1>
+
+    <form class="login-form" method="post" novalidate>
+      {% csrf_token %}
+      
+      <div class="form-group">
+        {{ form.nombre.label_tag }}
+        {{ form.nombre }}
+        {{ form.nombre.errors }}
+      </div>
+
+      <div class="form-group">
+        {{ form.tipo.label_tag }}
+        {{ form.tipo }}
+        {{ form.tipo.errors }}
+      </div>
+
+      <div class="form-group">
+        {{ form.cantidad.label_tag }}
+        {{ form.cantidad }}
+        {{ form.cantidad.errors }}
+      </div>
+
+      <div class="form-group">
+        {{ form.lote.label_tag }}
+        {{ form.lote }}
+        {{ form.lote.errors }}
+      </div>
+
+      <div class="form-group">
+        {{ form.estado.label_tag }}
+        {{ form.estado }}
+        {{ form.estado.errors }}
+      </div>
+
+      <div class="form-group">
+        {{ form.fecha_vencimiento.label_tag }}
+        {{ form.fecha_vencimiento }}
+        {{ form.fecha_vencimiento.errors }}
+      </div>
+
+      <div class="form-group">
+        {{ form.proveedor.label_tag }}
+        {{ form.proveedor }}
+        {{ form.proveedor.errors }}
+      </div>
+
+      <button type="submit" class="login-button">Guardar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

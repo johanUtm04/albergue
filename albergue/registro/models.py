@@ -1,9 +1,6 @@
 from django.db import models
 from datetime import date
 
-# Create your models here.
-from django.db import models
-
 class Medico(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
@@ -13,14 +10,13 @@ class Medico(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    
     def __str__(self):
         return self.nombre
-    class Meta:  
-        verbose_name="Médico"
-        verbose_name_plural="Médico"
-        ordering=["-created"]
 
+    class Meta:
+        verbose_name = "Médico"
+        verbose_name_plural = "Médico"
+        ordering = ["-created"]
 
 class RecursoNoMedico(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre")
@@ -28,6 +24,7 @@ class RecursoNoMedico(models.Model):
     cantidad = models.IntegerField(default=0, verbose_name="Cantidad disponible")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
     class Meta:
         verbose_name = "Recurso"
         verbose_name_plural = "Recursos"
@@ -35,15 +32,13 @@ class RecursoNoMedico(models.Model):
 
     def __str__(self):
         return self.nombre
-    
-from django.db import models
-from django.core.validators import MinValueValidator
 
 class RecursoMedico(models.Model):
     nombre = models.CharField(max_length=100)
     tipo = models.CharField(max_length=100)
     cantidad = models.IntegerField()
-    lote = models.CharField(max_length=100)
+    # imagen = models.ImageField(null=True, upload_to="foto", verbose_name="Fotografía")  ← descartaste esto
+    lote = models.CharField(max_length=100, null=True, blank=True)  # ← el nuevo campo que dio error
     estado = models.CharField(max_length=10, choices=[("DISP", "Disponible"), ("AGOT", "Agotado"), ("VENC", "Vencido")])
     fecha_vencimiento = models.DateField(null=True, blank=True)
     proveedor = models.CharField(max_length=100)

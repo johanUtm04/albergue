@@ -1,0 +1,35 @@
+<title>{%block titulo%} Eliminando {%endblock%}</title>
+
+{% load static %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+
+<!-- Encabezado -->
+{% block encabezado %}
+<div class="page-header">
+    <div class="page-title">
+        <h3>ELIMINAR</h3>
+    </div>
+</div>
+{% endblock %}
+<!-- /Encabezado -->
+
+<form method="POST">
+{% csrf_token %}
+
+<!-- ALERTA -->
+<div class="callout callout-danger fade in">
+    <h5>Eliminando</h5>
+    <p>¿Estás seguro que deseas <strong>Eliminar</strong> el campo seleccionado?</p>
+</div>
+<!-- /ALERTA -->
+
+<button type="submit" class="btn btn-danger">Si</button>
+<a href="{% url 'medicamentos' %}" class="btn btn-primary">Cancelar</a>
+</form>
+{% endblock %}

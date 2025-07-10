@@ -1,16 +1,16 @@
-<title>{%block titulo%} Registrar medicamento {%endblock%}</title>
-{% load static %} 
+<title>{% block titulo %} Editar medicamento {% endblock %}</title>
+{% load static %}
 
 {% block head_extra %}
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
-{% endblock %} 
+{% endblock %}
 
 {% block contenido %}
 <div class="login-container">
     <div class="login-box">
-        <h1 class="login-title">Registrar Nuevo Medicamento</h1>
+        <h1 class="login-title">Editar Datos del Medicamento</h1>
 
-    <form class="login-form" method="post" novalidate>
+        <form class="login-form" method="post">
             {% csrf_token %}
 
             <div class="form-group">
@@ -32,6 +32,12 @@
             </div>
 
             <div class="form-group">
+                <label for="id_lote" class="form-label">Lote</label>
+                {{ form.lote }}
+                {{ form.lote.errors }}
+            </div>
+
+            <div class="form-group">
                 <label for="id_estado" class="form-label">Estado</label>
                 {{ form.estado }}
                 {{ form.estado.errors }}
@@ -49,8 +55,8 @@
                 {{ form.proveedor.errors }}
             </div>
 
-            <button type="submit" class="login-button">Listo</button>
+            <button type="submit" class="login-button">Guardar cambios</button>
         </form>
-  </div>
+    </div>
 </div>
 {% endblock %}
