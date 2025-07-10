@@ -31,7 +31,7 @@ urlpatterns = [
 
 
 
-        path('recursos/', views_registros.lista_recursos, name='Lista_recursos'),
+    path('recursos/', views_registros.lista_recursos, name='Lista_recursos'),
     path('recursos/agregar/', views_registros.agregar_recurso, name='agregar_recurso'),
 
 #Seguridad y acceso
