@@ -1,0 +1,78 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %}Registrar Nuevo Medicamento{% endblock %}
+
+{% block imagen %}
+    {% load static %}
+    {% static 'inicio/images/medical.png' %}
+{% endblock %}
+
+{% block texto %}Gestión de Recursos Medicos{% endblock %}
+
+{% block span %}Albergue Divino Redentor{% endblock %}
+
+{% block contenido %}
+<div class="page-header">
+    <div class="page-title">
+         <h2>Gestion de Recursos
+            <small>Gestión de recursos hospitalarios</small>
+        </h2>
+    </div>
+</div>
+
+<div class="container"> {# Puedes añadir un contenedor para centrarlo y darle un ancho limitado #}
+    <div class="card"> {# Puedes usar una tarjeta de Bootstrap para darle un mejor aspecto #}
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Agregar Nuevo Recurso Médico</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'agregar_recurso' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nombre">Nombre del Recurso*</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo">Tipo de Recurso*</label>
+                            <input type="text" class="form-control" id="tipo" name="tipo" required>
+                            <small class="form-text text-muted">Ej: Medicamento, Equipo, Insumo</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="cantidad">Cantidad*</label>
+                            <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lote">Número de Lote*</label>
+                            <input type="text" class="form-control" id="lote" name="lote" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado*</label>
+                            <select class="form-control" id="estado" name="estado" required>
+                                <option value="DISP">Disponible</option>
+                                <option value="AGOT">Agotado</option>
+                                <option value="VENC">Vencido</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_vencimiento">Fecha de Vencimiento</label>
+                            <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="proveedor">Proveedor*</label>
+                    <input type="text" class="form-control" id="proveedor" name="proveedor" required>
+                </div>
+                <div class="mt-4"> {# Margen superior para los botones #}
+                    <a href="{% url 'Lista_recursos' %}" class="btn btn-secondary">Cancelar</a> 
+                    <button type="submit" class="btn btn-primary">Guardar Recurso</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
