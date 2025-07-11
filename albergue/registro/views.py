@@ -70,3 +70,7 @@ def eliminarInventario(request, id):
         inventario.delete()
         return redirect('inventario')
     return render(request, 'inicio/eliminarInventario.html', {'object': inventario})
+
+
+
+

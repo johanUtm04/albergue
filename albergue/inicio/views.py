@@ -73,3 +73,13 @@ def editarMedicamento(request):
 @login_required(login_url='Login')
 def registrarMedicamento(request):
     return render(request, 'inicio/registrarMedicamento.html')
+
+
+def registrarInventario(request):
+    return render(request, 'inicio/registrarInventario.html')
+
+def editarInventario(request):
+    return render(request, 'inicio/editarInventario.html')
+
+def eliminarInventario(request):
+    return render(request, 'inicio/eliminarInventario.html')
