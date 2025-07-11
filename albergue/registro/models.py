@@ -10,12 +10,12 @@ class Medico(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.nombre
 
     class Meta:
         verbose_name = "Médico"
-        verbose_name_plural = "Médico"
+        verbose_name_plural = "Médicos"
         ordering = ["-created"]
 
 class RecursoNoMedico(models.Model):
@@ -25,20 +25,19 @@ class RecursoNoMedico(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        verbose_name = "Recurso"
-        verbose_name_plural = "Recursos"
-        ordering = ["-created"]
-
-    def _str_(self):
+    def __str__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name = "Recurso No Médico"
+        verbose_name_plural = "Recursos No Médicos"
+        ordering = ["-created"]
 
 class RecursoMedico(models.Model):
     nombre = models.CharField(max_length=100)
     tipo = models.CharField(max_length=100)
     cantidad = models.IntegerField()
-    # imagen = models.ImageField(null=True, upload_to="foto", verbose_name="Fotografía")  ← descartaste esto
-    lote = models.CharField(max_length=100, null=True, blank=True)  # ← el nuevo campo que dio error
+    lote = models.CharField(max_length=100, null=True, blank=True)
     estado = models.CharField(max_length=10, choices=[("DISP", "Disponible"), ("AGOT", "Agotado"), ("VENC", "Vencido")])
     fecha_vencimiento = models.DateField(null=True, blank=True)
     proveedor = models.CharField(max_length=100)
@@ -51,6 +50,9 @@ class RecursoMedico(models.Model):
             return (self.fecha_vencimiento - date.today()).days
         return "Sin fecha"
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         verbose_name = "Recurso Médico"
         verbose_name_plural = "Recursos Médicos"
@@ -58,3 +60,12 @@ class RecursoMedico(models.Model):
         indexes = [
             models.Index(fields=['tipo', 'estado']),
         ]
+
+class Inventario(models.Model):
+    nombre = models.CharField(max_length=100)
+    cantidad = models.PositiveIntegerField()
+    fecha_reabastecimiento = models.DateField()
+    descripcion = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre

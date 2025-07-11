@@ -1,0 +1,34 @@
+<title>{% block titulo %} Editar Inventario {% endblock %}</title>
+{% load static %}
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div class="login-container">
+  <div class="login-box">
+    <h1 class="login-title">Editar Medicamento</h1>
+
+    <form class="login-form" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="nombre" class="form-label">Nombre del medicamento</label>
+        <input type="text" name="nombre" id="nombre" class="form-input" value="{{ inventario.nombre }}" required>
+      </div>
+      <div class="form-group">
+        <label for="cantidad" class="form-label">Cantidad</label>
+        <input type="number" name="cantidad" id="cantidad" class="form-input" value="{{ inventario.cantidad }}" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha" class="form-label">Fecha de reabastecimiento</label>
+        <input type="date" name="fecha" id="fecha" class="form-input" value="{{ inventario.fecha_reabastecimiento|date:'Y-m-d' }}" required>
+      </div>
+      <div class="form-group">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea name="descripcion" id="descripcion" class="form-input">{{ inventario.descripcion }}</textarea>
+      </div>
+      <button type="submit" class="login-button">Guardar cambios</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
