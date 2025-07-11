@@ -1,4 +1,4 @@
-<title>{%block titulo%} Pacientes {%endblock%}</title>
+<title>{% block titulo %} Pacientes {% endblock %}</title>
 
 {% load static %}
 
@@ -14,6 +14,7 @@
     <div class="header-right">
         <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
         <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
+        <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">Recursos NO medicos</a>
         {% if user.is_staff %}
         <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
         {% endif %}
@@ -26,28 +27,24 @@
 
 <div class="search-and-button">
     <input type="text" class="search-bar" placeholder="Buscar">
-    <a href="" class="btn-black">REGISTRAR NUEVO PACIENTE</a>
+    <a href="{% url 'crear_paciente' %}" class="btn-black">REGISTRAR NUEVO PACIENTE</a>
 </div>
 
 <h4>Pacientes</h4>
 
+{% for paciente in pacientes %}
 <div class="patient-card">
-    <h3>Lorem</h3>
-    <p>La escritura eficaz es un arte. Empezá usando palabras sencillas y cotidianas...</p>
+    <h3>{{ paciente.nombre }}</h3>
+    <p>Edad: {{ paciente.edad }}</p>
+    <p>Diagnóstico: {{ paciente.diagnostico|truncatewords:15 }}</p>
     <div class="patient-actions">
-        <a href="{% url 'detallePaciente' %}" class="btn-yellow">VISTA COMPLETA</a>
-        <button href="" class="btn-gray">EDITAR</button>
-        <button class="btn-red">ELIMINAR</button>
+        <a href="{% url 'detalle_paciente' paciente.id %}" class="btn-yellow">VISTA COMPLETA</a>
+        <a href="{% url 'editar_paciente' paciente.id %}" class="btn-gray">EDITAR</a>
+        <a href="{% url 'eliminar_paciente' paciente.id %}" class="btn-red">ELIMINAR</a>
     </div>
 </div>
+{% empty %}
+<p>No hay pacientes registrados.</p>
+{% endfor %}
 
-<div class="patient-card">
-    <h3>Lorem</h3>
-    <p>La escritura eficaz es un arte. Empezá usando palabras sencillas y cotidianas...</p>
-    <div class="patient-actions">
-        <a href="{% url 'detallePaciente' %}" class="btn-yellow">VISTA COMPLETA</a>
-        <button href="" class="btn-gray">EDITAR</button>
-        <button class="btn-red">ELIMINAR</button>
-    </div>
-</div>
 {% endblock %}

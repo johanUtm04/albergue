@@ -3,6 +3,7 @@ from django.urls import path
 from inicio import views
 from registro import views as views_registro
 from users import views as views_users
+from django.shortcuts import render, redirect
 
 
 urlpatterns = [
@@ -56,4 +57,13 @@ urlpatterns = [
 
 
 path('medicamentos/', views_registro.recursosMedicos, name='medicamentos'),
+
+
+
+
+path('tipos/', views_registro.lista_tipos, name='lista_tipos'),
+path('tipos/nuevo/', views_registro.registrar_tipo, name='registrar_tipo'),
+path('solicitudes/', views_registro.lista_solicitudes, name='lista_solicitudes'),
+path('solicitudes/nueva/', views_registro.registrar_solicitud, name='registrar_solicitud'),
+
 ]

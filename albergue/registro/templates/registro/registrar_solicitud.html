@@ -1,0 +1,34 @@
+{% load static %}
+
+<title>{% block titulo %} Registrar Solicitud 📝 {% endblock %}</title>
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<h2>Registrar Solicitud de Recurso No Médico</h2>
+
+<div class="login-container">
+  <div class="login-box" style="max-width: 500px; width: 100%;">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      
+      {% for field in form %}
+        <div class="form-group">
+          <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <div style="color: red; font-size: 0.85em;">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+      
+      <button type="submit" class="login-button">Guardar</button>
+    </form>
+
+    <a href="{% url 'lista_solicitudes' %}" class="btn-gray" style="margin-top: 20px; display: inline-block;">Volver a solicitudes</a>
+  </div>
+</div>
+
+{% endblock %}

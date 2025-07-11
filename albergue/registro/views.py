@@ -117,3 +117,33 @@ def eliminarInventario(request, id):
 
 
 
+# registro/views.py
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import TipoRecursoNoMedico, SolicitudRecursoNoMedico
+from .forms import TipoRecursoNoMedicoForm, SolicitudRecursoNoMedicoForm
+
+def lista_tipos(request):
+    tipos = TipoRecursoNoMedico.objects.all()
+    return render(request, 'registro/tipos.html', {'tipos': tipos})
+
+def registrar_tipo(request):
+    form = TipoRecursoNoMedicoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('lista_tipos')
+    return render(request, 'registro/registrar_tipo.html', {'form': form})
+
+def lista_solicitudes(request):
+    solicitudes = SolicitudRecursoNoMedico.objects.all()
+    estado = request.GET.get('estado')
+    if estado:
+        solicitudes = solicitudes.filter(estado=estado)
+    return render(request, 'registro/solicitudes.html', {'solicitudes': solicitudes})
+
+def registrar_solicitud(request):
+    form = SolicitudRecursoNoMedicoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('lista_solicitudes')
+    return render(request, 'registro/registrar_solicitud.html', {'form': form})

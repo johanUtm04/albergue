@@ -69,10 +69,15 @@ class Paciente(models.Model):
     #fecha_ingreso = models.DateField(auto_now_add=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Registrado")
 
+    def __str__(self):
+        return self.nombre  # Aquí para que en select muestre el nombre bonito
+
     class Meta:
         verbose_name = "Paciente"
         verbose_name_plural = "Pacientes"
         ordering = ["-created"]
+
+
 class Inventario(models.Model):
     nombre = models.CharField(max_length=100)
     cantidad = models.PositiveIntegerField()
@@ -81,3 +86,19 @@ class Inventario(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+# models.py
+class TipoRecursoNoMedico(models.Model):
+    nombre = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre  # Aquí para que en select muestre el nombre bonito
+
+class SolicitudRecursoNoMedico(models.Model):
+    paciente = models.ForeignKey('registro.Paciente', on_delete=models.CASCADE)
+    tipo_recurso = models.ForeignKey(TipoRecursoNoMedico, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
+    prioridad = models.CharField(choices=[('Alta', 'Alta'), ('Media', 'Media'), ('Baja', 'Baja')], max_length=10)
+    estado = models.CharField(choices=[('Pendiente', 'Pendiente'), ('Aprobado', 'Aprobado'), ('Entregado', 'Entregado'), ('Cancelado', 'Cancelado')], max_length=15)
+    fecha_solicitud = models.DateField(auto_now_add=True)

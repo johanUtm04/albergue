@@ -1,0 +1,25 @@
+{% load static %}
+
+<title>{% block titulo %} Registrar Tipo de Recurso No Médico {% endblock %}</title>
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<h2>Registrar Tipo de Recurso No Médico</h2>
+
+<div class="login-container">
+  <div class="login-box">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="login-button">Guardar</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+      <a href="{% url 'lista_tipos' %}" class="btn-yellow">Volver a lista de tipos</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

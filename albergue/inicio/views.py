@@ -1,12 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.shortcuts import render, get_object_or_404
-from .models import Inventario
-from registro.models import Inventario
-from registro.forms import InventarioForm  # muy importante
+
+from registro.models import Inventario, TipoRecursoNoMedico, SolicitudRecursoNoMedico
+from registro.forms import InventarioForm, TipoRecursoNoMedicoForm, SolicitudRecursoNoMedicoForm
 
 # Vista principal
 def principal(request):
@@ -17,7 +15,6 @@ def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
@@ -25,7 +22,6 @@ def login_view(request):
             return redirect('lista_pacientes')
         else:
             messages.error(request, 'Usuario o contraseña incorrectos.')
-
     return render(request, 'inicio/login.html')
 
 # Logout
@@ -47,11 +43,43 @@ def inventario(request):
     inventarios = Inventario.objects.all()
     return render(request, 'inicio/inventario.html', {'inventarios': inventarios})
 
+@login_required(login_url='Login')
+def detalleInventario(request, id):
+    inventario = get_object_or_404(Inventario, id=id)
+    return render(request, 'inicio/detalleInventario.html', {'inventario': inventario})
 
 @login_required(login_url='Login')
-def detalleInventario(request):
-    return render(request, 'inicio/detalleInventario.html')
+def editarInventario(request, id):
+    inventario = get_object_or_404(Inventario, id=id)
+    if request.method == 'POST':
+        form = InventarioForm(request.POST, instance=inventario)
+        if form.is_valid():
+            form.save()
+            return redirect('inventario')
+    else:
+        form = InventarioForm(instance=inventario)
+    return render(request, 'inicio/editarInventario.html', {'form': form})
 
+@login_required(login_url='Login')
+def eliminarInventario(request, id):
+    inventario = get_object_or_404(Inventario, id=id)
+    if request.method == 'POST':
+        inventario.delete()
+        return redirect('inventario')
+    return render(request, 'inicio/eliminarInventario.html', {'object': inventario})
+
+@login_required(login_url='Login')
+def registrarInventario(request):
+    if request.method == 'POST':
+        form = InventarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inventario')
+    else:
+        form = InventarioForm()
+    return render(request, 'inicio/registrarInventario.html', {'form': form})
+
+# Vistas adicionales (puedes eliminarlas si no se usan)
 @login_required(login_url='Login')
 def detallePaciente(request):
     return render(request, 'inicio/detallePaciente.html')
@@ -80,36 +108,33 @@ def editarMedicamento(request):
 def registrarMedicamento(request):
     return render(request, 'inicio/registrarMedicamento.html')
 
-def editarInventario(request, id):  # ← asegúrate de tener "id" aquí
-    inventario = get_object_or_404(Inventario, id=id)
-    if request.method == 'POST':
-        form = InventarioForm(request.POST, instance=inventario)
-        if form.is_valid():
-            form.save()
-            return redirect('inventario')
-    else:
-        form = InventarioForm(instance=inventario)
-    return render(request, 'inicio/editarInventario.html', {'form': form})
+# Tipos de Recurso No Médico
+@login_required(login_url='Login')
+def lista_tipos(request):
+    tipos = TipoRecursoNoMedico.objects.all()
+    return render(request, 'registro/tipos.html', {'tipos': tipos})
 
+@login_required(login_url='Login')
+def registrar_tipo(request):
+    form = TipoRecursoNoMedicoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('lista_tipos')
+    return render(request, 'registro/registrar_tipo.html', {'form': form})
 
-def eliminarInventario(request, id):
-    inventario = get_object_or_404(Inventario, id=id)
-    if request.method == 'POST':
-        inventario.delete()
-        return redirect('inventario')
-    return render(request, 'inicio/eliminarInventario.html', {'object': inventario})
+# Solicitudes
+@login_required(login_url='Login')
+def lista_solicitudes(request):
+    solicitudes = SolicitudRecursoNoMedico.objects.all()
+    estado = request.GET.get('estado')
+    if estado:
+        solicitudes = solicitudes.filter(estado=estado)
+    return render(request, 'registro/solicitudes.html', {'solicitudes': solicitudes})
 
-
-def detalleInventario(request, id):
-    inventario = get_object_or_404(Inventario, id=id)
-    return render(request, 'inicio/detalleInventario.html', {'inventario': inventario})
-
-def registrarInventario(request):
-    if request.method == 'POST':
-        form = InventarioForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('inventario')
-    else:
-        form = InventarioForm()
-    return render(request, 'inicio/registrarInventario.html', {'form': form})
+@login_required(login_url='Login')
+def registrar_solicitud(request):
+    form = SolicitudRecursoNoMedicoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('lista_solicitudes')
+    return render(request, 'registro/registrar_solicitud.html', {'form': form})
