@@ -1,61 +1,30 @@
-<title>{% block titulo %} Reabastecer Medicamentos {% endblock %}</title>
+<title>{%block titulo%} Registrar en Inventario 🧼 {%endblock%}</title>
 {% load static %}
 
+
+
 {% block head_extra %}
-<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
 {% endblock %}
 
-{% block contenido %}
+
+
+<h2>Registrar Producto En Inventario 🧼</h2>
+
 <div class="login-container">
     <div class="login-box">
-        <h1 class="login-title">Reabastecer Medicamento</h1>
-
-        <form class="login-form" method="post" action="">
+        <form method="POST" class="login-form">
             {% csrf_token %}
-
-            <div class="form-group">
-                <label for="nombre" class="form-label">Nombre del medicamento</label>
-                <input
-                    type="text"
-                    name="nombre"
-                    id="nombre"
-                    class="form-input"
-                    placeholder="Ej. Paracetamol"
-                    required>
-            </div>
-
-            <div class="form-group">
-                <label for="cantidad" class="form-label">Cantidad a reabastecer</label>
-                <input
-                    type="number"
-                    name="cantidad"
-                    id="cantidad"
-                    class="form-input"
-                    placeholder="Ej. 100"
-                    required>
-            </div>
-
-            <div class="form-group">
-                <label for="fecha" class="form-label">Fecha de reabastecimiento</label>
-                <input
-                    type="date"
-                    name="fecha"
-                    id="fecha"
-                    class="form-input"
-                    required>
-            </div>
-
-            <div class="form-group">
-                <label for="descripcion" class="form-label">Descripción (opcional)</label>
-                <textarea
-                    name="descripcion"
-                    id="descripcion"
-                    class="form-input"
-                    placeholder="Detalles sobre el medicamento o el lote..."></textarea>
-            </div>
-
+            {% for field in form %}
+                <div class="form-group">
+                    <label class="form-label">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div style="color: red;">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
             <button type="submit" class="login-button">Guardar</button>
         </form>
     </div>
 </div>
-{% endblock %}
