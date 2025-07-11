@@ -1,61 +1,75 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
-# Create your views here.
-
-def principal (request):
+# Vista principal
+def principal(request):
     return render(request, "inicio/principal.html")
 
-def login(request):
-    return render(request, "inicio/login.html")
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-
-def register_user(request):
+# Login
+def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
-        email = request.POST['email']
         password = request.POST['password']
-        fecha_nacimiento = request.POST['fecha_nacimiento']
 
-        if User.objects.filter(username=username).exists():
-            return render(request, 'inicio/register.html', {'error': 'El nombre de usuario ya existe'})
+        user = authenticate(request, username=username, password=password)
 
-        User.objects.create_user(username=username, email=email, password=password)
-        return redirect('Login')
+        if user is not None:
+            login(request, user)
+            return redirect('pacientes')
+        else:
+            messages.error(request, 'Usuario o contraseña incorrectos.')
 
-    # este return es obligatorio para cuando entras con GET
-    return render(request, 'inicio/register.html')
+    return render(request, 'inicio/login.html')
 
+# Logout
+def logout_view(request):
+    logout(request)
+    return redirect('Login')
+
+# Vistas protegidas
+@login_required(login_url='Login')
 def pacientes(request):
     return render(request, 'inicio/pacientes.html')
 
+@login_required(login_url='Login')
 def medicamentos(request):
     return render(request, 'inicio/medicamentos.html')
 
+@login_required(login_url='Login')
 def inventario(request):
     return render(request, 'inicio/inventario.html')
 
+@login_required(login_url='Login')
 def detalleInventario(request):
-    return render (request, 'inicio/detalleInventario.html')
+    return render(request, 'inicio/detalleInventario.html')
 
+@login_required(login_url='Login')
 def detallePaciente(request):
     return render(request, 'inicio/detallePaciente.html')
 
+@login_required(login_url='Login')
 def medicamentos_admin(request):
     return render(request, 'inicio/medicamentos_admin.html')
 
+@login_required(login_url='Login')
 def detalleMedicamento(request):
-    return render (request, 'inicio/detalleMedicamento.html')
+    return render(request, 'inicio/detalleMedicamento.html')
 
+@login_required(login_url='Login')
 def editarPaciente(request):
-    return render (request, 'inicio/editarPaciente.html')
+    return render(request, 'inicio/editarPaciente.html')
 
+@login_required(login_url='Login')
 def registrarPaciente(request):
-    return render (request, 'inicio/registrarPaciente.html')
+    return render(request, 'inicio/registrarPaciente.html')
 
+@login_required(login_url='Login')
 def editarMedicamento(request):
-    return render (request, 'inicio/editarMedicamento.html')
+    return render(request, 'inicio/editarMedicamento.html')
 
+@login_required(login_url='Login')
 def registrarMedicamento(request):
-    return render (request, 'inicio/registrarMedicamento.html')
+    return render(request, 'inicio/registrarMedicamento.html')

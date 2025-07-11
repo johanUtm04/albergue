@@ -16,7 +16,8 @@ def user_create(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.is_staff = form.cleaned_data['is_staff']
             return redirect('user_list')
     else:
         form = CustomUserCreationForm()
@@ -43,3 +44,15 @@ def user_delete(request, id):
         user.delete()
         return redirect('user_list')
     return render(request, 'users/user_confirm_delete.html', {'user': user})
+
+@login_required(login_url='Login')
+def user_list(request):
+    if request.user.is_staff:
+        # Si es staff → muestra la tabla
+        users = User.objects.all()
+        return render(request, 'users/user_list.html', {'users': users})
+    else:
+        # Si no es staff → manda a plantilla o redirecciona
+        return render(request, 'users/no_permisos.html')
+        # O, si prefieres:
+        # return redirect('Principal')

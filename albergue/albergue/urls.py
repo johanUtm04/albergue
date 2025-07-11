@@ -12,8 +12,7 @@ from users import views as views_users
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.principal, name="Principal"),
-    path('login/', views.login, name="Login"), # Nueva URL para el login
-    path('register/', views.register_user, name = "register"),
+    path('login/', views.login_view, name="Login"),
     path('pacientes/', views.pacientes, name='pacientes'),
     path('detallePaciente/', views.detallePaciente, name='detallePaciente'),
     path('medicamentos/', views_registro.recursosMedicos, name='medicamentos'),
@@ -35,6 +34,8 @@ urlpatterns = [
     path('users/create/', views_users.user_create, name='user_create'),
     path('users/edit/<int:id>/', views_users.user_edit, name='user_edit'),
     path('users/delete/<int:id>/', views_users.user_delete, name='user_delete'),
+    path('logout/', views.logout_view, name='logout'),
+
 ]
 
 
