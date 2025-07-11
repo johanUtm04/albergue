@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import RecursoMedico, Paciente
 from .forms import RecursoMedicoForm, PacienteForm
+from .models import RecursoMedico, Inventario
+from .forms import RecursoMedicoForm, InventarioForm
 
-# LISTAR
+# --- CRUD Recurso Médico ---
+
 def recursosMedicos(request):
     medicamentos = RecursoMedico.objects.all()
     return render(request, "registro/medicamentos.html", {'medicamentos': medicamentos})
 
-# REGISTRAR
 def registrar_recursoMedico(request):
     if request.method == 'POST':
         form = RecursoMedicoForm(request.POST)
@@ -18,7 +20,6 @@ def registrar_recursoMedico(request):
         form = RecursoMedicoForm()
     return render(request, "registro/registrarMedicamento.html", {'form': form})
 
-# EDITAR
 def editar_recursoMedico(request, id):
     recurso = get_object_or_404(RecursoMedico, id=id)
     if request.method == 'POST':
@@ -30,7 +31,6 @@ def editar_recursoMedico(request, id):
         form = RecursoMedicoForm(instance=recurso)
     return render(request, "registro/editarMedicamento.html", {'form': form})
 
-# ELIMINAR
 def eliminar_recursoMedico(request, id):
     recurso = get_object_or_404(RecursoMedico, id=id)
     if request.method == 'POST':
@@ -80,3 +80,36 @@ def eliminar_paciente(request, id):
 
 
 
+# --- CRUD Inventario ---
+
+def inventario(request):
+    inventarios = Inventario.objects.all()
+    return render(request, 'inicio/inventario.html', {'inventarios': inventarios})
+
+def registrarInventario(request):
+    if request.method == 'POST':
+        form = InventarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inventario')
+    else:
+        form = InventarioForm()
+    return render(request, 'inicio/registrarInventario.html', {'form': form})
+
+def editarInventario(request, id):
+    inventario = get_object_or_404(Inventario, id=id)
+    if request.method == 'POST':
+        form = InventarioForm(request.POST, instance=inventario)
+        if form.is_valid():
+            form.save()
+            return redirect('inventario')  # nombre de la url donde se lista el inventario
+    else:
+        form = InventarioForm(instance=inventario)
+    return render(request, 'inicio/editarInventario.html', {'form': form})
+
+def eliminarInventario(request, id):
+    inventario = get_object_or_404(Inventario, id=id)
+    if request.method == 'POST':
+        inventario.delete()
+        return redirect('inventario')
+    return render(request, 'inicio/eliminarInventario.html', {'object': inventario})

@@ -1,5 +1,6 @@
 from django import forms
 from .models import Medico, RecursoMedico, RecursoNoMedico, Paciente
+from .models import Medico, RecursoMedico, RecursoNoMedico,Inventario
 
 # Formulario para el modelo Medico
 class MedicoForm(forms.ModelForm):
@@ -44,3 +45,12 @@ class PacienteForm(forms.ModelForm):
     class Meta:
         model = Paciente
         fields = ['nombre', 'edad', 'diagnostico']
+# Formulario para el modelo Inventario
+class InventarioForm(forms.ModelForm):
+    class Meta:
+        model = Inventario
+        fields = ['nombre', 'cantidad', 'fecha_reabastecimiento', 'descripcion']
+        widgets = {
+            'fecha_reabastecimiento': forms.DateInput(attrs={'type': 'date'}),
+            'descripcion': forms.Textarea(attrs={'rows': 3}),
+        }

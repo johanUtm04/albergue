@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import RecursoMedico
 from .models import Paciente
+from .models import Inventario
+
 
 class RecursoMedicoAdmin(admin.ModelAdmin):
     list_display = (
@@ -32,3 +34,5 @@ class AdministrarPaciente(admin.ModelAdmin):
     readonly_fields = ('created', 'id')
 
 admin.site.register(Paciente, AdministrarPaciente)
+admin.site.register(Inventario)
+
