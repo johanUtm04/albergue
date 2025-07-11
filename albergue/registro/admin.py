@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import RecursoMedico
+from .models import Inventario
+
 
 class RecursoMedicoAdmin(admin.ModelAdmin):
     list_display = (
@@ -23,3 +25,6 @@ class RecursoMedicoAdmin(admin.ModelAdmin):
     estado_colorizado.short_description = 'Estado'
 
 admin.site.register(RecursoMedico, RecursoMedicoAdmin)
+
+admin.site.register(Inventario)
+
