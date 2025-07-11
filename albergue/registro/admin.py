@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import RecursoMedico
+from .models import Paciente
 
 class RecursoMedicoAdmin(admin.ModelAdmin):
     list_display = (
@@ -23,3 +24,11 @@ class RecursoMedicoAdmin(admin.ModelAdmin):
     estado_colorizado.short_description = 'Estado'
 
 admin.site.register(RecursoMedico, RecursoMedicoAdmin)
+
+class AdministrarPaciente(admin.ModelAdmin):
+    list_display =  ('id', 'nombre', 'edad','diagnostico')
+    search_fields = ('id', 'nombre')
+    date_hierarchy = 'created'
+    readonly_fields = ('created', 'id')
+
+admin.site.register(Paciente, AdministrarPaciente)

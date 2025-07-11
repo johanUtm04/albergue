@@ -1,0 +1,77 @@
+<title>{%block titulo%} Pacientes {%endblock%}</title>
+
+{% load static %} {% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
+{% endblock %} {% block contenido %} {% block nav %}
+<div class="header">
+  <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h1>
+  <div class="header-right">
+    <a href="{% url 'medicamentos' %}" style="text-decoration: none"
+      >MEDICAMENTOS</a
+    >
+    <a href="{% url 'inventario' %}" style="text-decoration: none"
+      >INVENTARIO</a
+    >
+    <a href="" style="text-decoration: none">CERRAR SESIÓN</a>
+  </div>
+</div>
+{% endblock %}
+
+<h2>
+  Bienvenido, Médico <br />
+  Gestión de Pacientes
+</h2>
+
+<div class="search-and-button">
+  <input type="text" class="search-bar" placeholder="Buscar" />
+  <a href="{% url 'crear_paciente' %}" class="btn-black"
+    >REGISTRAR NUEVO PACIENTE Ahora si</a
+  >
+</div>
+
+<h4>Pacientes</h4>
+
+{% for paciente in pacientes %}
+<div class="patient-card">
+  <h3>{{ paciente.nombre }}</h3>
+  <p>{{ paciente.diagnostico|truncatewords:10 }}</p>
+  <div class="patient-actions">
+    <a href="{% url 'detalle_paciente' paciente.id %}" class="btn-yellow"
+      >VISTA COMPLETA</a
+    >
+    <a href="{% url 'editar_paciente' paciente.id %}" class="btn-gray"
+      >EDITAR</a
+    >
+    <a href="{% url 'eliminar_paciente' paciente.id %}" class="btn-red"
+      >ELIMINAR</a
+    >
+  </div>
+</div>
+{% endfor %}
+
+<div class="patient-card">
+  <h3>Lorem</h3>
+  <p>
+    La escritura eficaz es un arte. Empezá usando palabras sencillas y
+    cotidianas...
+  </p>
+  <div class="patient-actions">
+    <a href="{% url 'detallePaciente' %}" class="btn-yellow">VISTA COMPLETA</a>
+    <button href="" class="btn-gray">EDITAR</button>
+    <button class="btn-red">ELIMINAR</button>
+  </div>
+</div>
+
+<div class="patient-card">
+  <h3>Lorem</h3>
+  <p>
+    La escritura eficaz es un arte. Empezá usando palabras sencillas y
+    cotidianas...
+  </p>
+  <div class="patient-actions">
+    <a href="{% url 'detallePaciente' %}" class="btn-yellow">VISTA COMPLETA</a>
+    <button href="" class="btn-gray">EDITAR</button>
+    <button class="btn-red">ELIMINAR</button>
+  </div>
+</div>
+{% endblock %}

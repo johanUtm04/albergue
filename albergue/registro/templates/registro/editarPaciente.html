@@ -1,0 +1,31 @@
+<title>{% block titulo %} Editar Paciente {% endblock %}</title>
+{% load static %} {% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
+{% endblock %} {% block contenido %}
+<div class="login-container">
+  <div class="login-box">
+    <h1 class="login-title">Editar Datos del Paciente</h1>
+
+    <form class="login-form" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="id_nombre" class="form-label">Nombre</label>
+        {{ form.nombre }} {{ form.nombre.errors }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_tipo" class="form-label">Edad</label>
+        {{ form.edad }} {{ form.edad.errors }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_cantidad" class="form-label">Diagnostico</label>
+        {{ form.diagnostico }} {{ form.diagnostico.errors }}
+      </div>
+
+      <button type="submit" class="login-button">Guardar cambios</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

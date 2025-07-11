@@ -1,0 +1,24 @@
+<title>{%block titulo%} Registrar paciente {%endblock%}</title>
+{% load static %} {% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
+{% endblock %} {% block contenido %}
+<div class="login-container">
+  <div class="login-box">
+    <h1 class="login-title">Registrar Nuevo Paciente</h1>
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.nombre.label_tag }} {{ form.nombre }} {{ form.nombre.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.edad.label_tag }} {{ form.edad }} {{ form.edad.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.diagnostico.label_tag }} {{ form.diagnostico }}
+      </div>
+      <button type="submit" class="login-button">Listo</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

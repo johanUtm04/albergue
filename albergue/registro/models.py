@@ -58,3 +58,19 @@ class RecursoMedico(models.Model):
         indexes = [
             models.Index(fields=['tipo', 'estado']),
         ]
+
+class Paciente(models.Model):
+    id = models.AutoField(primary_key=True, verbose_name="Clave")
+    nombre = models.CharField(max_length=100)
+    edad = models.IntegerField()
+    diagnostico = models.TextField()
+    #fecha_ingreso = models.DateField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name="Registrado")
+
+    class Meta:
+        verbose_name = "Paciente"
+        verbose_name_plural = "Pacientes"
+        ordering = ["-created"]
+
+    def __str__(self):
+        return self.nombre

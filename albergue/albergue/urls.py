@@ -29,6 +29,14 @@ urlpatterns = [
     path('registrarMedicamento/', views_registro.registrar_recursoMedico, name='registrarMedicamento'),
     path('medicamentos/eliminar/<int:id>/', views_registro.eliminar_recursoMedico, name='eliminar_medicamento'),
 
+    #Pacientes
+    path('lista/', views_registro.lista_pacientes, name='lista_pacientes'),
+    path('nuevo/', views_registro.crear_paciente, name='crear_paciente'),
+    path('<int:id>/', views_registro.detalle_paciente, name='detalle_paciente'),
+    path('<int:id>/editar/', views_registro.editar_paciente, name='editar_paciente'),
+    path('<int:id>/eliminar/', views_registro.eliminar_paciente, name='eliminar_paciente'),
+
+
 
 #Seguridad y acceso
     path('users/', views_users.user_list, name='user_list'),

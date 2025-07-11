@@ -1,5 +1,5 @@
 from django import forms
-from .models import Medico, RecursoMedico, RecursoNoMedico
+from .models import Medico, RecursoMedico, RecursoNoMedico, Paciente
 
 # Formulario para el modelo Medico
 class MedicoForm(forms.ModelForm):
@@ -39,3 +39,8 @@ class RecursoNoMedicoForm(forms.ModelForm):
             'tipo': forms.TextInput(attrs={'class': 'form-control'}),
             'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),
         }
+
+class PacienteForm(forms.ModelForm):
+    class Meta:
+        model = Paciente
+        fields = ['nombre', 'edad', 'diagnostico']

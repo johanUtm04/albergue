@@ -1,0 +1,37 @@
+<title>{%block titulo%} Detalle del paciente {%endblock%}</title>
+
+{% load static %} {% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
+{% endblock %} {% block contenido %} {% block nav %}
+<div class="header">
+  <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h1>
+  <div class="header-right">
+    <a href="{% url 'medicamentos' %}" style="text-decoration: none"
+      >MEDICAMENTOS</a
+    >
+    <a href="{% url 'pacientes' %}" style="text-decoration: none">PACIENTES</a>
+    <a href="" style="text-decoration: none">CERRAR SESIÓN</a>
+  </div>
+</div>
+{% endblock %}
+
+<h2>Historial Médico Completo</h2>
+
+<div class="detalle-container">
+  <div class="detalle-texto">
+    <h3>Paciente: {{ paciente.nombre }}</h3>
+    <p><strong>Edad:</strong> {{ paciente.edad }}</p>
+    <p><strong>Diagnóstico:</strong> {{ paciente.diagnostico }}</p>
+  </div>
+  <div class="detalle-imagen">
+    <img src="{% static 'inicio/img/paciente.jpg' %}" alt="Paciente" />
+  </div>
+</div>
+
+<div class="detalle-botones">
+  <a href="{% url 'editar_paciente' paciente.pk %}" class="btn-gray">EDITAR</a>
+  <a href="{% url 'eliminar_paciente' paciente.pk %}" class="btn-red"
+    >ELIMINAR</a
+  >
+</div>
+{% endblock %}
