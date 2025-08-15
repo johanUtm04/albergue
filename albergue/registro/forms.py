@@ -45,14 +45,28 @@ class PacienteForm(forms.ModelForm):
     class Meta:
         model = Paciente
         fields = ['nombre', 'edad', 'diagnostico']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre completo'}),
+            'edad': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Edad'}),
+            'diagnostico': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Diagnóstico'}),
+        }
+
 # Formulario para el modelo Inventario
 class InventarioForm(forms.ModelForm):
     class Meta:
         model = Inventario
         fields = ['nombre', 'cantidad', 'fecha_reabastecimiento', 'descripcion']
         widgets = {
-            'fecha_reabastecimiento': forms.DateInput(attrs={'type': 'date'}),
-            'descripcion': forms.Textarea(attrs={'rows': 3}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),
+            'fecha_reabastecimiento': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }),
+            'descripcion': forms.Textarea(attrs={
+                'rows': 3,
+                'class': 'form-control'
+            }),
         }
 
 
