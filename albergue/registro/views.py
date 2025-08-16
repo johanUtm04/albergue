@@ -3,6 +3,9 @@ from .models import RecursoMedico, Paciente
 from .forms import RecursoMedicoForm, PacienteForm
 from .models import RecursoMedico, Inventario
 from .forms import RecursoMedicoForm, InventarioForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import TipoRecursoNoMedico, SolicitudRecursoNoMedico
+from .forms import TipoRecursoNoMedicoForm, SolicitudRecursoNoMedicoForm
 
 # --- CRUD Recurso Médico ---
 
@@ -77,14 +80,11 @@ def eliminar_paciente(request, id):
 
 
 
-
-
-
 # --- CRUD Inventario ---
 
 def inventario(request):
     inventarios = Inventario.objects.all()
-    return render(request, 'inicio/inventario.html', {'inventarios': inventarios})
+    return render(request, 'registro/inventario.html', {'inventarios': inventarios})
 
 def registrarInventario(request):
     if request.method == 'POST':
@@ -94,7 +94,13 @@ def registrarInventario(request):
             return redirect('inventario')
     else:
         form = InventarioForm()
-    return render(request, 'inicio/registrarInventario.html', {'form': form})
+    return render(request, 'registro/registrarInventario.html', {'form': form})
+
+
+def detalleInventario(request, id):
+    inventario = get_object_or_404(Inventario, id=id)
+    return render(request, 'registro/detalleInventario.html', {'inventario': inventario})
+
 
 def editarInventario(request, id):
     inventario = get_object_or_404(Inventario, id=id)
@@ -102,26 +108,20 @@ def editarInventario(request, id):
         form = InventarioForm(request.POST, instance=inventario)
         if form.is_valid():
             form.save()
-            return redirect('inventario')  # nombre de la url donde se lista el inventario
+            return redirect('inventario')  
     else:
         form = InventarioForm(instance=inventario)
-    return render(request, 'inicio/editarInventario.html', {'form': form})
+    return render(request, 'registro/editarInventario.html', {'form': form})
 
 def eliminarInventario(request, id):
     inventario = get_object_or_404(Inventario, id=id)
     if request.method == 'POST':
         inventario.delete()
         return redirect('inventario')
-    return render(request, 'inicio/eliminarInventario.html', {'object': inventario})
+    return render(request, 'registro/eliminarInventario.html', {'object': inventario})
 
 
-
-
-# registro/views.py
-
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import TipoRecursoNoMedico, SolicitudRecursoNoMedico
-from .forms import TipoRecursoNoMedicoForm, SolicitudRecursoNoMedicoForm
+# TIPOS DE SOLICITUDES
 
 def lista_tipos(request):
     tipos = TipoRecursoNoMedico.objects.all()

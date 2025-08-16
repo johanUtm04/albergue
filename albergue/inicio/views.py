@@ -32,21 +32,21 @@ def logout_view(request):
 # Vistas protegidas
 @login_required(login_url='Login')
 def pacientes(request):
-    return render(request, 'inicio/pacientes.html')
+    return render(request, 'registro/pacientes.html')
 
 @login_required(login_url='Login')
 def medicamentos(request):
-    return render(request, 'inicio/medicamentos.html')
+    return render(request, 'registro/medicamentos.html')
 
 @login_required(login_url='Login')
 def inventario(request):
     inventarios = Inventario.objects.all()
-    return render(request, 'inicio/inventario.html', {'inventarios': inventarios})
+    return render(request, 'registro/inventario.html', {'inventarios': inventarios})
 
 @login_required(login_url='Login')
 def detalleInventario(request, id):
     inventario = get_object_or_404(Inventario, id=id)
-    return render(request, 'inicio/detalleInventario.html', {'inventario': inventario})
+    return render(request, 'registro/detalleInventario.html', {'inventario': inventario})
 
 @login_required(login_url='Login')
 def editarInventario(request, id):
@@ -58,7 +58,7 @@ def editarInventario(request, id):
             return redirect('inventario')
     else:
         form = InventarioForm(instance=inventario)
-    return render(request, 'inicio/editarInventario.html', {'form': form})
+    return render(request, 'registro/editarInventario.html', {'form': form})
 
 @login_required(login_url='Login')
 def eliminarInventario(request, id):
@@ -66,7 +66,7 @@ def eliminarInventario(request, id):
     if request.method == 'POST':
         inventario.delete()
         return redirect('inventario')
-    return render(request, 'inicio/eliminarInventario.html', {'object': inventario})
+    return render(request, 'registro/eliminarInventario.html', {'object': inventario})
 
 @login_required(login_url='Login')
 def registrarInventario(request):
@@ -77,36 +77,36 @@ def registrarInventario(request):
             return redirect('inventario')
     else:
         form = InventarioForm()
-    return render(request, 'inicio/registrarInventario.html', {'form': form})
+    return render(request, 'registro/registrarInventario.html', {'form': form})
 
 # Vistas adicionales (puedes eliminarlas si no se usan)
 @login_required(login_url='Login')
 def detallePaciente(request):
-    return render(request, 'inicio/detallePaciente.html')
+    return render(request, 'registro/detallePaciente.html')
 
 @login_required(login_url='Login')
 def medicamentos_admin(request):
-    return render(request, 'inicio/medicamentos_admin.html')
+    return render(request, 'registro/medicamentos_admin.html')
 
 @login_required(login_url='Login')
 def detalleMedicamento(request):
-    return render(request, 'inicio/detalleMedicamento.html')
+    return render(request, 'registro/detalleMedicamento.html')
 
 @login_required(login_url='Login')
 def editarPaciente(request):
-    return render(request, 'inicio/editarPaciente.html')
+    return render(request, 'registro/editarPaciente.html')
 
 @login_required(login_url='Login')
 def registrarPaciente(request):
-    return render(request, 'inicio/registrarPaciente.html')
+    return render(request, 'registro/registrarPaciente.html')
 
 @login_required(login_url='Login')
 def editarMedicamento(request):
-    return render(request, 'inicio/editarMedicamento.html')
+    return render(request, 'registro/editarMedicamento.html')
 
 @login_required(login_url='Login')
 def registrarMedicamento(request):
-    return render(request, 'inicio/registrarMedicamento.html')
+    return render(request, 'registro/registrarMedicamento.html')
 
 # Tipos de Recurso No Médico
 @login_required(login_url='Login')

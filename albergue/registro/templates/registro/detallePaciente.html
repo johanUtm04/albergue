@@ -1,19 +1,31 @@
-<title>{%block titulo%} Detalle del paciente {%endblock%}</title>
+<title>{%block titulo%} Detalle del Paciente {%endblock%}</title>
+{% load static %} 
 
-{% load static %} {% block head_extra %}
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+{% block head_extra %}
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
-{% endblock %} {% block contenido %} {% block nav %}
+{% endblock %}
+
+{% block nav %}
 <div class="header">
-  <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h1>
-  <div class="header-right">
-    <a href="{% url 'medicamentos' %}" style="text-decoration: none"
-      >MEDICAMENTOS</a
-    >
-    <a href="{% url 'pacientes' %}" style="text-decoration: none">PACIENTES</a>
-    <a href="" style="text-decoration: none">CERRAR SESIÓN</a>
-  </div>
+    <h1> </h1>
+    <div class="header-right">
+        <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;">PACIENTES</a>
+        <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
+        <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
+        {% if user.is_staff %}
+        <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
+        <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
+        {% endif %}
+        <a href="{% url 'logout' %}" style="text-decoration:none;">CERRAR SESIÓN</a>
+    </div>
 </div>
 {% endblock %}
+
+{% block contenido %}
 
 <h2>Historial Médico Completo</h2>
 
@@ -30,8 +42,7 @@
 
 <div class="detalle-botones">
   <a href="{% url 'editar_paciente' paciente.pk %}" class="btn-gray">EDITAR</a>
-  <a href="{% url 'eliminar_paciente' paciente.pk %}" class="btn-red"
-    >ELIMINAR</a
+  <a href="{% url 'eliminar_paciente' paciente.pk %}" class="btn-red">ELIMINAR</a
   >
 </div>
 {% endblock %}

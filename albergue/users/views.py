@@ -18,6 +18,7 @@ def user_create(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_staff = form.cleaned_data['is_staff']
+            user.save()
             return redirect('user_list')
     else:
         form = CustomUserCreationForm()

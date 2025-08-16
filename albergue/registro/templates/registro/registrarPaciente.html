@@ -5,15 +5,19 @@
   rel="stylesheet"
 />
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
-{% endblock %} {% block contenido %}
+{% endblock %} 
+
+{% block contenido %}
 <div class="login-container">
   <div class="login-box">
     <h1 class="login-title">Registrar Nuevo Paciente</h1>
 
-    <form method="POST">
+    <form class="login-form" method="POST"> 
       {% csrf_token %}
       <div class="form-group">
-        {{ form.nombre.label_tag }} {{ form.nombre }} {{ form.nombre.errors }}
+        {{ form.nombre.label_tag }} 
+        {{ form.nombre }} 
+        {{ form.nombre.errors }}
       </div>
       <div class="form-group">
         {{ form.edad.label_tag }} {{ form.edad }} {{ form.edad.errors }}
@@ -21,8 +25,12 @@
       <div class="form-group">
         {{ form.diagnostico.label_tag }} {{ form.diagnostico }}
       </div>
-      <button type="submit" class="login-button">Listo</button>
+      <button type="submit" name="Boton guardar" class="btn-black">Guardar</button>
     </form>
+
+    <div style="margin-top: 20px;">
+      <a href="{% url 'lista_pacientes' %}">Volver a lista de pacientes</a>
+    </div>
   </div>
 </div>
 {% endblock %}

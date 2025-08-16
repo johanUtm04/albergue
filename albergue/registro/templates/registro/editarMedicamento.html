@@ -55,8 +55,12 @@
                 {{ form.proveedor.errors }}
             </div>
 
-            <button type="submit" class="login-button">Guardar cambios</button>
+            <button type="submit" name="Boton guardar" class="btn-black">Guardar cambios</button>
         </form>
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'medicamentos' %}" class="btn-yellow">Volver a lista de medicamentos</a>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,41 +1,64 @@
 {% load static %}
 
-<title>{% block titulo %} Solicitudes de Recursos No Médicos 🛠️ {% endblock %}</title>
+<title>{% block titulo %} Solicitudes de Recursos No Médicos {% endblock %}</title>
 
 {% block head_extra %}
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
 {% endblock %}
 
 {% block contenido %}
-<h2>Solicitudes de Recursos No Médicos</h2>
 
-<form method="get" class="search-and-button" style="margin-bottom: 20px; align-items: center;">
-  <label for="estado" style="font-weight: bold; margin-right: 10px;">Filtrar por estado:</label>
-  <select name="estado" id="estado" class="search-bar" style="width: 150px; margin-right: 10px;">
-    <option value="" {% if not request.GET.estado %}selected{% endif %}>Todos</option>
-    <option value="Pendiente" {% if request.GET.estado == "Pendiente" %}selected{% endif %}>Pendiente</option>
-    <option value="Aprobado" {% if request.GET.estado == "Aprobado" %}selected{% endif %}>Aprobado</option>
-    <option value="Entregado" {% if request.GET.estado == "Entregado" %}selected{% endif %}>Entregado</option>
-    <option value="Cancelado" {% if request.GET.estado == "Cancelado" %}selected{% endif %}>Cancelado</option>
-  </select>
-  <button type="submit" class="btn-black">Filtrar</button>
-</form>
-
-{% if solicitudes %}
-  <div>
-  {% for solicitud in solicitudes %}
-    <div class="card" style="margin-bottom: 15px;">
-      <h3>{{ solicitud.tipo_recurso.nombre }}</h3>
-      <p><strong>Cantidad:</strong> {{ solicitud.cantidad }}</p>
-      <p><strong>Estado:</strong> {{ solicitud.estado }}</p>
-      <p><strong>Paciente:</strong> {{ solicitud.paciente.nombre }}</p>
+{% block nav %}
+<div class="header">
+    <h1> </h1>
+    <div class="header-right">
+        <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;">PACIENTES</a>
+        <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
+        <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
+        {% if user.is_staff %}
+        <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
+        <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
+        <a href="{% url 'logout' %}" style="text-decoration:none;">CERRAR SESIÓN</a>
+        {% endif %}
     </div>
-  {% endfor %}
-  </div>
-{% else %}
-  <p>No hay solicitudes.</p>
-{% endif %}
+</div>
+{% endblock %}
 
-<a href="{% url 'registrar_solicitud' %}" class="btn-yellow" style="margin-top: 20px; display: inline-block;">Nueva solicitud</a>
+<div class="main-container">
 
+    <h2>Solicitudes de Recursos No Médicos</h2>
+
+    <div class="header-actions">
+        <form method="get" class="filter-section">
+            <label for="estado" class="filter-label">Filtrar por estado:</label>
+            <select name="estado" id="estado" class="search-bar">
+                <option value="" {% if not request.GET.estado %}selected{% endif %}>Todos</option>
+                <option value="Pendiente" {% if request.GET.estado == "Pendiente" %}selected{% endif %}>Pendiente</option>
+                <option value="Aprobado" {% if request.GET.estado == "Aprobado" %}selected{% endif %}>Aprobado</option>
+                <option value="Entregado" {% if request.GET.estado == "Entregado" %}selected{% endif %}>Entregado</option>
+                <option value="Cancelado" {% if request.GET.estado == "Cancelado" %}selected{% endif %}>Cancelado</option>
+            </select>
+            <button type="submit" name="Boton filtrar" class="btn-black">Filtrar</button>
+        </form>
+        <a href="{% url 'registrar_solicitud' %}" class="btn-black">Nueva solicitud</a>
+        <a href="{% url 'lista_tipos' %}" class="btn-yellow">Regresar a tipos de solicitudes</a>
+    </div>
+
+    
+    <div class="requests-list">
+    {% if solicitudes %}
+        {% for solicitud in solicitudes %}
+        <div class="request-card">
+            <h3>{{ solicitud.tipo_recurso.nombre }}</h3>
+            <p><strong>Cantidad:</strong> {{ solicitud.cantidad }}</p>
+            <p><strong>Estado:</strong> {{ solicitud.estado }}</p>
+            <p><strong>Paciente:</strong> {{ solicitud.paciente.nombre }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-results">No hay solicitudes.</p>
+    {% endif %}
+    </div>
+
+</div>
 {% endblock %}

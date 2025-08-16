@@ -7,8 +7,8 @@
 
 {% block contenido %}
 <div class="login-container">
-    <div class="login-box">
-        <h1 class="login-title">Registrar Nuevo Medicamento</h1>
+  <div class="login-box">
+    <h1 class="login-title">Registrar Nuevo Medicamento</h1>
 
     <form class="login-form" method="post" novalidate>
       {% csrf_token %}
@@ -55,8 +55,12 @@
         {{ form.proveedor.errors }}
       </div>
 
-      <button type="submit" class="login-button">Guardar</button>
+      <button type="submit" name="Boton guardar" class="btn-black">Guardar</button>
     </form>
+
+    <div style="margin-top: 20px;">
+      <a href="{% url 'medicamentos' %}" class="btn-yellow">Volver a lista de medicamentos</a>
+    </div>
   </div>
 </div>
 {% endblock %}

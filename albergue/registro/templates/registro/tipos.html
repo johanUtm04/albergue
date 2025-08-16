@@ -9,20 +9,22 @@
 
 {% block nav %}
 <div class="header">
-    <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</h1>
+    <h1> </h1>
     <div class="header-right">
         <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;">PACIENTES</a>
         <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
         <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
-
         {% if user.is_staff %}
+        <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
         <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
-        {% endif %}
         <a href="{% url 'logout' %}" style="text-decoration:none;">CERRAR SESIÓN</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
-<h2>Tipos de Recursos No Médicos</h2>
+
+
+<h2>Recursos No Médicos</h2>
 
 <div class="search-and-button" style="margin-bottom: 20px;">
   <a href="{% url 'registrar_tipo' %}" class="btn-black">Agregar nuevo tipo</a>
@@ -43,3 +45,6 @@
 </div>
 
 {% endblock %}
+
+
+

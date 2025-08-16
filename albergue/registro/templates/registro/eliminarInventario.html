@@ -21,7 +21,7 @@
 <form method="post" style="margin-top: 30px;">
     {% csrf_token %}
     <div class="patient-actions">
-        <button type="submit" class="btn-red">Sí, eliminar</button>
+        <button type="submit" name="Boton eliminar" class="btn-red">Sí, eliminar</button>
         <a href="{% url 'inventario' %}" class="btn-gray">Cancelar</a>
     </div>
 </form>

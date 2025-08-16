@@ -1,15 +1,25 @@
 <title>{%block titulo%} Iniciar Sesión {%endblock%}</title>
-{% load static %} {% block head_extra %}
+{% load static %} 
+
+{% block head_extra %}
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
-{% endblock %} {% block contenido %}
+<style>
+  :root {
+    --login-background: url("{% static 'inicio/images/divinoredentor.png' %}");
+  }
+</style>
+{% endblock %} 
+
+{% block contenido %}
 <div class="login-container">
   <div class="login-box">
-    <h1 class="login-title">Iniciar Sesiónn</h1>
+    <h1 class="login-title">Iniciar Sesión</h1>
     <p class="login-subtitle">Inicia sesión para continuar</p>
-    {% comment %} Mensaje en caso de tener mal las credenciales {% endcomment %}
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert">
+
+      {% comment %} Mensaje en caso de tener mal las credenciales {% endcomment %}
+        {% if messages %}
+      {% for message in messages %}
+  <div class="alert">
     {{ message }}
     </div>
     {% endfor %}
@@ -17,17 +27,19 @@
 
     <form class="login-form" method="post">
       {% csrf_token %}   
+
       <div class="form-group">
-      <label for="username" class="form-label">Nombre de Usuario</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        class="form-input"
-        placeholder="Tu nombre de usuario"
-        required
-      />
+        <label for="username" class="form-label">Nombre de Usuario</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          class="form-input"
+          placeholder="Tu nombre de usuario"
+          required
+        />
       </div>
+      
       <div class="form-group">
         <label for="password" class="form-label">Contraseña</label>
         <input
@@ -39,8 +51,12 @@
           required
         />
       </div>
-      <button type="submit" class="login-button">Iniciar Sesión</button>
+      <button name="Boton iniciar" type="submit" class="btn-black">Iniciar Sesión</button>
     </form>
+
+    <div style="margin-top: 20px;">
+      <a href="{% url 'Principal' %}" class="btn-red">Volver a principal</a>
+    </div>
 
   </div>
 </div>

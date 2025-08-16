@@ -3,13 +3,12 @@
 {% load static %}
 
 {% block head_extra %}
-<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}"> 
 {% endblock %}
 
-{% block contenido %}
 {% block nav %} 
 <div class="header">
-    <h1>ㅤ</h1>
+    <h1> </h1>
     <div class="header-right">
         <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;"> PACIENTES</a>
         <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
@@ -18,6 +17,8 @@
     </div>
 </div>
 {% endblock %}
+
+{% block contenido %}
 
 <h2>Dispensación de medicamentos</h2>
 
