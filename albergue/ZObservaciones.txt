@@ -43,3 +43,9 @@ https://github.com/johanUtm04/albergue.git
 
 Comandos ejecutados para subir a pythonAnywhere:
 mkvirtualenv --python=python3.13.1 django1
+git clone https://github.com/johanUtm04/albergue.git
+pip install -r requeriments.txt
+
+(django1) 04:10 ~/albergue/albergue (main)$ python manage.py check --deploy
+python manage.py check --deploy
+(django1) 04:17 ~/albergue/albergue (main)$ pwd
