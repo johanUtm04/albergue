@@ -1,0 +1,45 @@
+# 1️⃣ Ver en qué rama estás
+git branch
+
+# 2️⃣ Ver cambios locales
+git status
+
+# 3️⃣ Traer info del remoto sin hacer merge
+git fetch
+git status
+
+# 4️⃣ Comparar tu rama con el remoto
+git log origin/main..HEAD      # commits locales que no están en remoto
+git log HEAD..origin/main      # commits remotos que no tienes
+
+# 5️⃣ Traer cambios del remoto y actualizar tu rama
+git pull
+
+# 6️⃣ Ver todos los remotos configurados
+git remote -v
+
+# 7️⃣ Ver diferencias entre local y remoto
+git diff origin/main
+
+# 8️⃣ Preparar archivos para commit (añadir cambios)
+git add .                      # añade todos los cambios
+# o git add <archivo>          # añade solo un archivo específico
+
+# 9️⃣ Hacer commit
+git commit -m "Mensaje de tu commit"
+
+# 🔟 Subir cambios al remoto
+git push
+
+py manage.py runserver
+py manage.py migrate
+
+albergue2004
+cecasparking@gmail.com
+martes123
+
+https://github.com/johanUtm04/albergue.git
+
+
+Comandos ejecutados para subir a pythonAnywhere:
+mkvirtualenv --python=python3.13.1 django1
