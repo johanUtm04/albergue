@@ -1,198 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>{% block titulo %}{% endblock %}</title>
+<title>{%block titulo%} {%endblock%}</title>
 
-    {% load static %}
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="{% static 'inicio/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'inicio/css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'inicio/css/responsive.css' %}" />
-    <link
-      rel="icon"
-      href="{% static 'inicio/images/fevicon.png' %}"
-      type="image/gif"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'inicio/css/jquery.mCustomScrollbar.min.css' %}"
-    />
-    <link rel="stylesheet" href="{% static 'inicio/css/custom_login.css' %}" />
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="{% static 'inicio/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'inicio/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'inicio/css/responsive.css' %}">
+<link rel="icon" href="{% static 'inicio/images/fevicon.png' %}" type="image/gif" />
+<link rel="stylesheet" href="{% static 'inicio/css/jquery.mCustomScrollbar.min.css' %}">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="{% static 'inicio/js/jquery.min.js' %}"></script>
+<script src="{% static 'inicio/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'inicio/js/jquery-3.0.0.min.js' %}"></script>
+<script src="{% static 'inicio/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="{% static 'inicio/js/custom.js' %}"></script>
+<link rel="stylesheet" href="{% static 'inicio/css/custom_login.css' %}"> 
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}"> 
+</head>
 
-    <script src="{% static 'inicio/js/jquery.min.js' %}"></script>
-    <script src="{% static 'inicio/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'inicio/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
-    <script src="{% static 'inicio/js/custom.js' %}"></script>
 
-    <style>
-      /* Animaciones para transiciones entre páginas */
-      .fade-in {
-        opacity: 0;
-        animation: fadeIn 0.3s forwards;
-      }
-
-      .fade-out {
-        animation: fadeOut 0.3s forwards;
-      }
-
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeOut {
-        to {
-          opacity: 0;
-        }
-      }
-
-      /* Estilos generales de header y menú */
-      .header {
-        background: linear-gradient(135deg, rgb(252, 252, 252), rgb(247, 247, 247));
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-
-      .menu-main-item {
-        font-weight: 500;
-        color: rgb(0, 0, 0) !important;
-        transition: all 0.3s ease;
-        padding: 10px 15px !important;
-        border-radius: 4px;
-      }
-
-      .menu-main-item:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        transform: translateY(-2px);
-      }
-
-      .dropdown-menu-custom {
-        border: none;
-        border-radius: 8px;
-        padding: 10px 0;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        min-width: 240px;
-        background-color: white;
-        border-top: 3px solid #3498db;
-      }
-
-      .dropdown-item-custom {
-        padding: 10px 20px;
-        color: #34495e;
-        font-weight: 500;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-      }
-
-      .dropdown-item-custom:hover {
-        background-color: #f8f9fa;
-        color: #2980b9;
-        transform: translateX(5px);
-      }
-
-      .dropdown-item-custom i {
-        width: 20px;
-        text-align: center;
-      }
-
-      .login-btn {
-        background-color: #e74c3c;
-        border-radius: 4px;
-        padding: 10px 20px !important;
-        color: white !important;
-        transition: all 0.3s ease;
-      }
-
-      .login-btn:hover {
-        background-color: #c0392b;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .dropdown:hover .dropdown-menu-custom {
-        display: block;
-        animation: fadeIn 0.3s ease;
-      }
-    </style>
-  </head>
-
-  <body class="main-layout fade-in">
+<body class="main-layout">
     <header>
-      <div class="header">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <a class="navbar-brand logo" href="#"></a>
-            </div>
-            <div class="col">
-              <nav
-                class="navigation navbar navbar-expand-md navbar-dark justify-content-end"
-              >
-                <button
-                  class="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarsExample04"
-                  aria-controls="navbarsExample04"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ml-3">
-                      <a class="nav-link login-btn" href="{% url 'Login' %}">
-                        <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
-                      </a>
-                    </li>
-                  </ul>
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <a class="navbar-brand logo" href="#"></a>
+                    </div>
+                    <div class="col">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark justify-content-end">
+                            <button class="navbar-toggler" style="background-color: rgba(255, 255, 255, 0.204)" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="fas fa-bars fa-2x" style="color: rgb(255, 65, 65);"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav ml-auto">
+                                    <!-- Opción de inicio de sesión -->
+                                    <li class="nav-item ml-3">
+                                        <a class="nav-link login-btn" href="{% url 'Login' %}">
+                                            <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión 
+                                        </a>
+                                        <br>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
-              </nav>
             </div>
-          </div>
         </div>
-      </div>
     </header>
-
-    <div class="fade-in">
-      {% block contenido %}
-      {% endblock %}
-    </div>
-
-    <!-- Script de animaciones -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const links = document.querySelectorAll("a");
-
-        links.forEach((link) => {
-          link.addEventListener("click", function (e) {
-            const href = this.getAttribute("href");
-            if (
-              href &&
-              !href.startsWith("#") &&
-              !this.hasAttribute("data-no-anim")
-            ) {
-              e.preventDefault();
-              document.body.classList.add("fade-out");
-              setTimeout(() => {
-                window.location.href = href;
-              }, 300);
-            }
-          });
-        });
-      });
-    </script>
-  </body>
+{% block contenido %}
+{% endblock %}
+</body>
 </html>
