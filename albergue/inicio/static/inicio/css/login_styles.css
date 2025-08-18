@@ -614,3 +614,53 @@ select, textarea {
       font-size: 12px;
     }
   }
+
+.main-content-wrapper {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+footer {
+    background-color: #33333311;
+    color: #000000;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #f32c2c;
+}
+
+.social-icons a {
+    color: #000000;
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #3498db;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #ccc;
+}
