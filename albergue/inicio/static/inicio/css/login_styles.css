@@ -18,7 +18,7 @@ html, body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f0f0; /* Blanco semi-transparente */
+  background-color: #f0f0f0; 
   backdrop-filter: blur(4px);
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0); 
@@ -483,7 +483,7 @@ a.btn-yellow {
     font-size: 300px;
     align-items: center;
     gap: 8px;
-    background-color: #e74c3c;
+    background-color: #34495e;
     border-radius: 4px;
     padding: 10px 20px !important;
     color: white !important;
@@ -491,7 +491,7 @@ a.btn-yellow {
 }
 
 .login-btn:hover {
-    background-color: #c0392b;
+    background-color: #3a5c7e;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -499,14 +499,14 @@ a.btn-yellow {
 /* Responsivo */
 @media (max-width: 768px) {
   .login-btn {
-    font-size: 14px;   /* más pequeño en tablets/móviles */
+    font-size: 14px; 
     padding: 7px 14px;
   }
 }
 
 @media (max-width: 480px) {
   .login-btn {
-    font-size: 12px;   /* aún más pequeño en celulares chicos */
+    font-size: 12px;   
     padding: 6px 12px;
   }
 }
@@ -645,7 +645,7 @@ footer {
 .footer-section h4 {
     margin-bottom: 15px;
     font-weight: bold;
-    color: #f32c2c;
+    color: #34495e;
 }
 
 .social-icons a {
