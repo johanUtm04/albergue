@@ -6,54 +6,72 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="login-container">
-    <div class="login-box">
-        <h1 class="login-title">Reabastecer Medicamento</h1>
+<div class="fade-in">
+  <div class="login-container">
+      <div class="login-box">
+          <h1 class="login-title">Reabastecer Medicamento</h1>
 
-        <form class="login-form" method="post" action="">
-            {% csrf_token %}
+          <form class="login-form" method="post" action="">
+              {% csrf_token %}
 
-            <div class="form-group">
-                <label for="nombre" class="form-label">Nombre del medicamento</label>
-                <input
-                    type="text"
-                    name="nombre"
-                    id="nombre"
-                    class="form-input"
-                    value="{{ medicamento.nombre }}"
-                    readonly>
-            </div>
+              <div class="form-group">
+                  <label for="nombre" class="form-label">Nombre del medicamento</label>
+                  <input
+                      type="text"
+                      name="nombre"
+                      id="nombre"
+                      class="form-input"
+                      value="{{ medicamento.nombre }}"
+                      readonly>
+              </div>
 
-            <div class="form-group">
-                <label for="cantidad" class="form-label">Cantidad a reabastecer</label>
-                {{ form.cantidad }}
-            </div>
+              <div class="form-group">
+                  <label for="cantidad" class="form-label">Cantidad a reabastecer</label>
+                  {{ form.cantidad }}
+              </div>
 
-            <div class="form-group">
-                <label for="fecha" class="form-label">Fecha de reabastecimiento</label>
-                <input
-                    type="date"
-                    name="fecha"
-                    id="fecha"
-                    class="form-input"
-                    required>
-            </div>
+              <div class="form-group">
+                  <label for="fecha" class="form-label">Fecha de reabastecimiento</label>
+                  <input
+                      type="date"
+                      name="fecha"
+                      id="fecha"
+                      class="form-input"
+                      required>
+              </div>
 
-            <div class="form-group">
-                <label for="descripcion" class="form-label">Descripción (opcional)</label>
-                <textarea
-                    name="descripcion"
-                    id="descripcion"
-                    class="form-input"
-                    placeholder="Detalles sobre el medicamento o el lote..."></textarea>
-            </div>
+              <div class="form-group">
+                  <label for="descripcion" class="form-label">Descripción (opcional)</label>
+                  <textarea
+                      name="descripcion"
+                      id="descripcion"
+                      class="form-input"
+                      placeholder="Detalles sobre el medicamento o el lote..."></textarea>
+              </div>
 
-            <button name="Boton guardar" type="submit" class="login-button">Guardar</button>
-        </form>
+              <button name="Boton guardar" type="submit" class="login-button">Guardar</button>
+          </form>
 
-        <div style="margin-top: 20px;">
-      <a href="{% url 'inventario' %}" class="btn-yellow">Volver a inventario</a>
-    </div>
-    </div>
+          <div style="margin-top: 20px;">
+              <a href="{% url 'inventario' %}" class="btn-yellow">Volver a inventario</a>
+          </div>
+      </div>
+  </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("a");
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#") && !this.hasAttribute("data-no-anim")) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => { window.location.href = href; }, 300);
+      }
+    });
+  });
+});
+</script>
 {% endblock %}

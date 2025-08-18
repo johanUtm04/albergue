@@ -6,43 +6,64 @@
 {% endblock %} 
 
 {% block contenido %}
-<div class="login-container">
-    <div class="login-box">
-        <h1 class="login-title">Editar Datos del Medicamento</h1>
+<div class="fade-in">
+  <div class="login-container">
+      <div class="login-box">
+          <h1 class="login-title">Editar Datos del Medicamento</h1>
 
-    <form class="login-form" method="post">
-      {% csrf_token %}
-        <div class="form-group">
-            <label for="text" class="form-label">Nombre</label>
-            <input 
-            type="text" 
-            name="text" 
-            id="nombre" 
-            class="form-input" 
-            placeholder="Nombre del medicamento" 
-            required>
-        </div>
-        <div class="form-group">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input 
-            type="text" 
-            name="descripcion" 
-            id="descripcion" 
-            class="form-input" 
-            placeholder="Descripción" 
-            required>
-        </div>
-        <div class="form-group">
-            <label for="fecha_caducidad" class="form-label">Fecha de Caducidad</label>
-            <input 
-            type="date" 
-            name="fecha_caducidad" 
-            id="fecha_caducidad" 
-            class="form-input" 
-            required>
-        </div>
-        <button name="Boton guardar" type="submit" class="login-button">Guardar</button>
-    </form>
+      <form class="login-form" method="post">
+        {% csrf_token %}
+          <div class="form-group">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input 
+              type="text" 
+              name="nombre" 
+              id="nombre" 
+              class="form-input" 
+              placeholder="Nombre del medicamento" 
+              required>
+          </div>
+          <div class="form-group">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <input 
+              type="text" 
+              name="descripcion" 
+              id="descripcion" 
+              class="form-input" 
+              placeholder="Descripción" 
+              required>
+          </div>
+          <div class="form-group">
+              <label for="fecha_caducidad" class="form-label">Fecha de Caducidad</label>
+              <input 
+              type="date" 
+              name="fecha_caducidad" 
+              id="fecha_caducidad" 
+              class="form-input" 
+              required>
+          </div>
+          <button name="Boton guardar" type="submit" class="login-button">Guardar</button>
+      </form>
+    </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("a");
+
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#") && !this.hasAttribute("data-no-anim")) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      }
+    });
+  });
+});
+</script>
 {% endblock %}

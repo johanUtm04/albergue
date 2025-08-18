@@ -6,55 +6,76 @@
 {% endblock %} 
 
 {% block contenido %}
-<div class="login-container">
-    <div class="login-box">
-        <h1 class="login-title">Editar Datos del Paciente</h1>
+<div class="fade-in">
+  <div class="login-container">
+      <div class="login-box">
+          <h1 class="login-title">Editar Datos del Paciente</h1>
 
-    <form class="login-form" method="post">
-      {% csrf_token %}
-        <div class="form-group">
-            <label for="username" class="form-label">Nombre</label>
-            <input 
-            type="text" 
-            name="username" 
-            id="username" 
-            class="form-input" 
-            placeholder="Nombre de usuario" 
-            required>
-        </div>
-        <div class="form-group">
-            <label for="email" class="form-label">Correo Electrónico</label>
-            <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-input"
-            placeholder="tuemail@ejemplo.com"
-            required
-            />
-        </div>
-        <div class="form-group">
-            <label for="password" class="form-label">Contraseña</label>
-            <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-input"
-            placeholder="*****"
-            required
-            />
-        </div>
-        <div class="form-group">
-            <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
-            <input 
-            type="date" 
-            name="fecha_nacimiento" 
-            id="fecha_nacimiento" 
-            class="form-input" 
-            required>
-        </div>
-        <button name="Boton guardar" type="submit" class="login-button">Guardar</button>
-    </form>
+      <form class="login-form" method="post">
+        {% csrf_token %}
+          <div class="form-group">
+              <label for="username" class="form-label">Nombre</label>
+              <input 
+              type="text" 
+              name="username" 
+              id="username" 
+              class="form-input" 
+              placeholder="Nombre de usuario" 
+              required>
+          </div>
+          <div class="form-group">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="tuemail@ejemplo.com"
+              required
+              />
+          </div>
+          <div class="form-group">
+              <label for="password" class="form-label">Contraseña</label>
+              <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="*****"
+              required
+              />
+          </div>
+          <div class="form-group">
+              <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+              <input 
+              type="date" 
+              name="fecha_nacimiento" 
+              id="fecha_nacimiento" 
+              class="form-input" 
+              required>
+          </div>
+          <button name="Boton guardar" type="submit" class="login-button">Guardar</button>
+      </form>
+    </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("a");
+
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#") && !this.hasAttribute("data-no-anim")) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      }
+    });
+  });
+});
+</script>
 {% endblock %}

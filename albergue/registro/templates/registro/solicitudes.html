@@ -24,7 +24,7 @@
 </div>
 {% endblock %}
 
-<div class="main-container">
+<div class="fade-in main-container">
 
     <h2>Solicitudes de Recursos No Médicos</h2>
 
@@ -61,4 +61,24 @@
     </div>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("a");
+
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#") && !this.hasAttribute("data-no-anim")) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      }
+    });
+  });
+});
+</script>
+
 {% endblock %}

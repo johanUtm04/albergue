@@ -23,6 +23,8 @@
 </div>
 {% endblock %}
 
+<div class="fade-in">
+
 <h2>Bienvenido, Médico <br> Gestión de Pacientes</h2>
 
 <div class="search-and-button">
@@ -46,5 +48,23 @@
 {% empty %}
 <p>No hay pacientes registrados.</p>
 {% endfor %}
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("a");
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#") && !this.hasAttribute("data-no-anim")) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => { window.location.href = href; }, 300);
+      }
+    });
+  });
+});
+</script>
 
 {% endblock %}

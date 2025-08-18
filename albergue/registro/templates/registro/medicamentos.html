@@ -24,34 +24,37 @@
 </div>
 {% endblock %}
 
-<h2>Dispensación de medicamentos</h2>
+<div class="fade-in"> 
+    <h2>Dispensación de medicamentos</h2>
 
-<div class="search-and-button">
-    <a href="{% url 'registrarMedicamento' %}" class="btn-black">REGISTRAR SALIDAS DE MEDICAMENTO</a>
-</div>
+    <div class="search-and-button">
+        <a href="{% url 'registrarMedicamento' %}" class="btn-black">
+            REGISTRAR SALIDAS DE MEDICAMENTO
+        </a>
+    </div>
 
-<h4>Historial de salidas</h4>
+    <h4>Historial de salidas</h4>
 
-{% for medicamento in medicamentos %}
-<div class="patient-card">
-    <div class="patient-content">
-        <h3>{{ medicamento.nombre }}</h3>
-        <p>
-            Tipo: {{ medicamento.tipo }} <br>
-            Cantidad: {{ medicamento.cantidad }} <br>
-            Lote: {{ medicamento.lote }} <br>
-            Estado: {{ medicamento.get_estado_display }} <br>
-            Fecha de vencimiento: {{ medicamento.fecha_vencimiento }} <br>
-            Proveedor: {{ medicamento.proveedor }}
-        </p>
-        <div class="patient-actions">
-            <a href="{% url 'editarMedicamento' medicamento.id %}" class="btn-gray">EDITAR</a>
-            <a href="{% url 'eliminarMedicamento' medicamento.id %}" class="btn-red">ELIMINAR</a>
+    {% for medicamento in medicamentos %}
+    <div class="patient-card">
+        <div class="patient-content">
+            <h3>{{ medicamento.nombre }}</h3>
+            <p>
+                Tipo: {{ medicamento.tipo }} <br>
+                Cantidad: {{ medicamento.cantidad }} <br>
+                Lote: {{ medicamento.lote }} <br>
+                Estado: {{ medicamento.get_estado_display }} <br>
+                Fecha de vencimiento: {{ medicamento.fecha_vencimiento }} <br>
+                Proveedor: {{ medicamento.proveedor }}
+            </p>
+            <div class="patient-actions">
+                <a href="{% url 'editarMedicamento' medicamento.id %}" class="btn-gray">EDITAR</a>
+                <a href="{% url 'eliminarMedicamento' medicamento.id %}" class="btn-red">ELIMINAR</a>
+            </div>
         </div>
     </div>
+    {% empty %}
+    <p>No hay medicamentos registrados.</p>
+    {% endfor %}
 </div>
-{% empty %}
-<p>No hay medicamentos registrados.</p>
-{% endfor %}
-
 {% endblock %}

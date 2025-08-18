@@ -10,26 +10,29 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="login-container">
-  <div class="login-box">
-    <h1 class="login-title">Editar Producto</h1>
-    
-    <form method="POST" class="login-form">
+<div class="fade-in">
+  <div class="login-container">
+    <div class="login-box">
+      <h1 class="login-title">Editar Producto</h1>
+      
+      <form method="POST" class="login-form">
         {% csrf_token %}
         {% for field in form %}
         <div class="form-group">
-            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                {{ field }}
-                {% if field.errors %}
-                    <div style="color: red;">{{ field.errors }}</div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            <button type="submit" name="Boton actualizar" class="btn-black">Actualizar</button>
-        </form>
-        <div style="margin-top: 20px;">
-            <a href="{% url 'inventario' %}" class="btn-yellow">Volver a inventario</a>
+          <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <div style="color: red;">{{ field.errors }}</div>
+          {% endif %}
         </div>
+        {% endfor %}
+        <button type="submit" name="Boton actualizar" class="btn-black">Actualizar</button>
+      </form>
+
+      <div style="margin-top: 20px;">
+        <a href="{% url 'inventario' %}" class="btn-yellow">Volver a inventario</a>
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}

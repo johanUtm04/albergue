@@ -5,6 +5,7 @@
 {% block head_extra %}
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
 {% endblock %}
+
 {% block contenido %}
 
 {% block nav %}
@@ -23,28 +24,25 @@
 </div>
 {% endblock %}
 
+<div class="fade-in">
+    <h2>Recursos No Médicos</h2>
 
-<h2>Recursos No Médicos</h2>
+    <div class="search-and-button" style="margin-bottom: 20px;">
+      <a href="{% url 'registrar_tipo' %}" class="btn-black">Agregar nuevo tipo</a>
+    </div>
 
-<div class="search-and-button" style="margin-bottom: 20px;">
-  <a href="{% url 'registrar_tipo' %}" class="btn-black">Agregar nuevo tipo</a>
+    <ul style="list-style-type: none; padding-left: 0;">
+      {% for tipo in tipos %}
+        <li class="patient-card" style="padding: 12px 15px; margin-bottom: 8px; border-radius: 8px; background-color: #f9f9f9;">
+          {{ tipo.nombre }}
+        </li>
+      {% empty %}
+        <li>No hay tipos registrados.</li>
+      {% endfor %}
+    </ul>
+
+    <div style="margin-top: 30px;">
+      <a href="{% url 'lista_solicitudes' %}" class="btn-yellow">Ver solicitudes</a>
+    </div>
 </div>
-
-<ul style="list-style-type: none; padding-left: 0;">
-  {% for tipo in tipos %}
-    <li class="patient-card" style="padding: 12px 15px; margin-bottom: 8px; border-radius: 8px; background-color: #f9f9f9;">
-      {{ tipo.nombre }}
-    </li>
-  {% empty %}
-    <li>No hay tipos registrados.</li>
-  {% endfor %}
-</ul>
-
-<div style="margin-top: 30px;">
-  <a href="{% url 'lista_solicitudes' %}" class="btn-yellow">Ver solicitudes</a>
-</div>
-
 {% endblock %}
-
-
-

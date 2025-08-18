@@ -6,34 +6,39 @@
 />
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
 {% endblock %} 
-
 {% block contenido %}
-<div class="login-container">
-  <div class="login-box">
-    <h1 class="login-title">Editar Datos del Paciente</h1>
+<div class="fade-in">
+  <div class="login-container">
+    <div class="login-box">
+      <h1 class="login-title">Editar Datos del Paciente</h1>
 
-    <form class="login-form" method="post">
-      {% csrf_token %}
+      <form class="login-form" method="post">
+        {% csrf_token %}
 
-      <div class="form-group">
-        <label for="id_nombre" class="form-label">Nombre</label>
-        {{ form.nombre }} {{ form.nombre.errors }}
+        <div class="form-group">
+          <label for="id_nombre" class="form-label">Nombre</label>
+          {{ form.nombre }} {{ form.nombre.errors }}
+        </div>
+
+        <div class="form-group">
+          <label for="id_tipo" class="form-label">Edad</label>
+          {{ form.edad }} {{ form.edad.errors }}
+        </div>
+
+        <div class="form-group">
+          <label for="id_cantidad" class="form-label">Diagnostico</label>
+          {{ form.diagnostico }} {{ form.diagnostico.errors }}
+        </div>
+
+        <button type="submit" name="Boton guardar" class="btn-black">
+          Guardar
+        </button>
+      </form>
+      <div style="margin-top: 20px">
+        <a href="{% url 'lista_pacientes' %}" class="btn-yellow"
+          >Volver a lista de pacientes
+        </a>
       </div>
-
-      <div class="form-group">
-        <label for="id_tipo" class="form-label">Edad</label>
-        {{ form.edad }} {{ form.edad.errors }}
-      </div>
-
-      <div class="form-group">
-        <label for="id_cantidad" class="form-label">Diagnostico</label>
-        {{ form.diagnostico }} {{ form.diagnostico.errors }}
-      </div>
-
-      <button type="submit" name="Boton guardar" class="btn-black">Guardar</button>
-    </form>
-    <div style="margin-top: 20px;">
-      <a href="{% url 'lista_pacientes' %}" class="btn-yellow">Volver a lista de pacientes</a>
     </div>
   </div>
 </div>

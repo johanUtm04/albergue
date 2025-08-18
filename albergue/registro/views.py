@@ -35,11 +35,11 @@ def editar_recursoMedico(request, id):
     return render(request, "registro/editarMedicamento.html", {'form': form})
 
 def eliminar_recursoMedico(request, id):
-    recurso = get_object_or_404(RecursoMedico, id=id)
+    medicamento = get_object_or_404(RecursoMedico, id=id)
     if request.method == 'POST':
-        recurso.delete()
+        medicamento.delete()
         return redirect('medicamentos')
-    return render(request, "registro/confirmar_eliminacion.html", {'object': recurso})
+    return render(request, "registro/eliminarMedicamento.html", {'medicamento': medicamento})
 
 
 #Pacientes

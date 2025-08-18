@@ -26,44 +26,62 @@
     </div>
 </div>
 {% endblock %}
- 
-<br>
-<h2>Seguridad y Accesos</h2>
-    <div class="search-and-button">
-        <a href="{% url 'user_create' %}" class="btn-black">Crear nuevo usuario</a>
-    </div>
 
-    <table class="user-table">
-        <thead>
-            <tr>
-                <th>Usuario</th>
-                <th>Email</th>
-                <th>Staff</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-            <tr>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{% if user.is_staff %}Sí{% else %}No{% endif %}</td>
-                <td>
-                    <div class="action-buttons">
-                        <a href="{% url 'user_edit' user.id %}" class="btn-gray">Editar</a>
-                        <a href="{% url 'user_delete' user.id %}" class="btn-red">Eliminar</a>
-                    </div>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="4">No hay usuarios registrados.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="fade-in">
+  <br>
+  <h2>Seguridad y Accesos</h2>
+  <div class="search-and-button">
+      <a href="{% url 'user_create' %}" class="btn-black">Crear nuevo usuario</a>
+  </div>
+
+  <table class="user-table">
+      <thead>
+          <tr>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>Staff</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for user in users %}
+          <tr>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{% if user.is_staff %}Sí{% else %}No{% endif %}</td>
+              <td>
+                  <div class="action-buttons">
+                      <a href="{% url 'user_edit' user.id %}" class="btn-gray">Editar</a>
+                      <a href="{% url 'user_delete' user.id %}" class="btn-red">Eliminar</a>
+                  </div>
+              </td>
+          </tr>
+          {% empty %}
+          <tr>
+              <td colspan="4">No hay usuarios registrados.</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("a");
+
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#") && !this.hasAttribute("data-no-anim")) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      }
+    });
+  });
+});
+</script>
+
 {% endblock %}
-
-

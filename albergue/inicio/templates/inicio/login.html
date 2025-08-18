@@ -1,4 +1,4 @@
-<title>{%block titulo%} Iniciar Sesión {%endblock%}</title>
+<title>{% block titulo %} Iniciar Sesión {% endblock %}</title>
 {% load static %} 
 
 {% block head_extra %}
@@ -7,22 +7,31 @@
   :root {
     --login-background: url("{% static 'inicio/images/divinoredentor.png' %}");
   }
+
+  /* Animación fade-in */
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
+
+  .fade-in.show {
+    opacity: 1;
+  }
 </style>
 {% endblock %} 
 
 {% block contenido %}
-<div class="login-container">
+<div class="login-container fade-in" id="loginContainer">
   <div class="login-box">
     <h1 class="login-title">Iniciar Sesión</h1>
     <p class="login-subtitle">Inicia sesión para continuar</p>
 
-      {% comment %} Mensaje en caso de tener mal las credenciales {% endcomment %}
-        {% if messages %}
+    {% if messages %}
       {% for message in messages %}
-  <div class="alert">
-    {{ message }}
-    </div>
-    {% endfor %}
+        <div class="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
     {% endif %}
 
     <form class="login-form" method="post">
@@ -60,4 +69,11 @@
 
   </div>
 </div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('loginContainer');
+    container.classList.add('show');
+  });
+</script>
 {% endblock %}

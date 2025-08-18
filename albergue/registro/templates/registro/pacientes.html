@@ -24,27 +24,28 @@
 </div>
 {% endblock %}
 
-<h2>Bienvenido, Médico <br> Gestión de Pacientes</h2>
+<div class="fade-in"> 
+    <h2>Bienvenido, Médico <br> Gestión de Pacientes</h2>
 
-<div class="search-and-button">
-    <input type="text" class="search-bar" placeholder="Buscar">
-    <a href="{% url 'crear_paciente' %}" class="btn-black">REGISTRAR NUEVO PACIENTE</a>
-</div>
-
-<h4>Pacientes</h4>
-
-{% for paciente in pacientes %}
-<div class="patient-card">
-    <h3>{{ paciente.nombre }}</h3>
-    <p>Edad: {{ paciente.edad }}</p>
-    <p>Diagnóstico: {{ paciente.diagnostico|truncatewords:15 }}</p>
-    <div class="patient-actions">
-        <a href="{% url 'editar_paciente' paciente.id %}"  class="btn-gray">EDITAR</a>
-        <a href="{% url 'eliminar_paciente' paciente.id %}" class="btn-red">ELIMINAR</a>
+    <div class="search-and-button">
+        <input type="text" class="search-bar" placeholder="Buscar">
+        <a href="{% url 'crear_paciente' %}" class="btn-black">REGISTRAR NUEVO PACIENTE</a>
     </div>
-</div>
-{% empty %}
-<p>No hay pacientes registrados.</p>
-{% endfor %}
 
+    <h4>Pacientes</h4>
+
+    {% for paciente in pacientes %}
+    <div class="patient-card">
+        <h3>{{ paciente.nombre }}</h3>
+        <p>Edad: {{ paciente.edad }}</p>
+        <p>Diagnóstico: {{ paciente.diagnostico|truncatewords:15 }}</p>
+        <div class="patient-actions">
+            <a href="{% url 'editar_paciente' paciente.id %}"  class="btn-gray">EDITAR</a>
+            <a href="{% url 'eliminar_paciente' paciente.id %}" class="btn-red">ELIMINAR</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No hay pacientes registrados.</p>
+    {% endfor %}
+</div>
 {% endblock %}

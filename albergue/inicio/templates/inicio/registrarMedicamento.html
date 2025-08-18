@@ -6,51 +6,69 @@
 {% endblock %} 
 
 {% block contenido %}
-<div class="login-container">
-    <div class="login-box">
-        <h1 class="login-title">Registrar Nuevo Medicamento</h1>
+<div class="fade-in">
+  <div class="login-container">
+      <div class="login-box">
+          <h1 class="login-title">Registrar Nuevo Medicamento</h1>
 
-    <form class="login-form" method="post" novalidate>
-            {% csrf_token %}
+          <form class="login-form" method="post" novalidate>
+              {% csrf_token %}
 
-            <div class="form-group">
-                <label for="id_nombre" class="form-label">Nombre</label>
-                {{ form.nombre }}
-                {{ form.nombre.errors }}
-            </div>
+              <div class="form-group">
+                  <label for="id_nombre" class="form-label">Nombre</label>
+                  {{ form.nombre }}
+                  {{ form.nombre.errors }}
+              </div>
 
-            <div class="form-group">
-                <label for="id_tipo" class="form-label">Tipo</label>
-                {{ form.tipo }}
-                {{ form.tipo.errors }}
-            </div>
+              <div class="form-group">
+                  <label for="id_tipo" class="form-label">Tipo</label>
+                  {{ form.tipo }}
+                  {{ form.tipo.errors }}
+              </div>
 
-            <div class="form-group">
-                <label for="id_cantidad" class="form-label">Cantidad</label>
-                {{ form.cantidad }}
-                {{ form.cantidad.errors }}
-            </div>
+              <div class="form-group">
+                  <label for="id_cantidad" class="form-label">Cantidad</label>
+                  {{ form.cantidad }}
+                  {{ form.cantidad.errors }}
+              </div>
 
-            <div class="form-group">
-                <label for="id_estado" class="form-label">Estado</label>
-                {{ form.estado }}
-                {{ form.estado.errors }}
-            </div>
+              <div class="form-group">
+                  <label for="id_estado" class="form-label">Estado</label>
+                  {{ form.estado }}
+                  {{ form.estado.errors }}
+              </div>
 
-            <div class="form-group">
-                <label for="id_fecha_vencimiento" class="form-label">Fecha de Vencimiento</label>
-                {{ form.fecha_vencimiento }}
-                {{ form.fecha_vencimiento.errors }}
-            </div>
+              <div class="form-group">
+                  <label for="id_fecha_vencimiento" class="form-label">Fecha de Vencimiento</label>
+                  {{ form.fecha_vencimiento }}
+                  {{ form.fecha_vencimiento.errors }}
+              </div>
 
-            <div class="form-group">
-                <label for="id_proveedor" class="form-label">Proveedor</label>
-                {{ form.proveedor }}
-                {{ form.proveedor.errors }}
-            </div>
+              <div class="form-group">
+                  <label for="id_proveedor" class="form-label">Proveedor</label>
+                  {{ form.proveedor }}
+                  {{ form.proveedor.errors }}
+              </div>
 
-            <button name="Boton guardar" type="submit" class="login-button">Listo</button>
-        </form>
+              <button name="Boton guardar" type="submit" class="login-button">Listo</button>
+          </form>
+      </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("a");
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href && !href.startsWith("#") && !this.hasAttribute("data-no-anim")) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => { window.location.href = href; }, 300);
+      }
+    });
+  });
+});
+</script>
 {% endblock %}
