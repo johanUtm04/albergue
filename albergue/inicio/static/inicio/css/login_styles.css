@@ -4,8 +4,8 @@ html, body {
     margin: 0;
     padding: 0 40px;
     font-family: Arial, sans-serif;
-    color: black;
-    background: #f0f2f5;
+    color: rgb(0, 0, 0);
+    background: #ffffff;
     background-image: var(--login-background); 
     background-size: cover; 
     background-repeat: no-repeat;
@@ -479,6 +479,10 @@ a.btn-yellow {
 }
 
 .login-btn {
+    display: flex;
+    font-size: 300px;
+    align-items: center;
+    gap: 8px;
     background-color: #e74c3c;
     border-radius: 4px;
     padding: 10px 20px !important;
@@ -491,6 +495,22 @@ a.btn-yellow {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .login-btn {
+    font-size: 14px;   /* más pequeño en tablets/móviles */
+    padding: 7px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-btn {
+    font-size: 12px;   /* aún más pequeño en celulares chicos */
+    padding: 6px 12px;
+  }
+}
+
 
 .dropdown:hover .dropdown-menu-custom {
     display: block;
@@ -567,3 +587,30 @@ select, textarea {
 .form-button:hover {
   opacity: 0.9;
 }
+
+  .contenido { display: grid; grid-template-columns: 1fr 2fr 1fr; grid-template-rows: auto auto; gap: 20px; padding: 20px; align-items: start; }
+  .columna { display: flex; flex-direction: column; gap: 20px; }
+  .columna img { width: 100%; border: 1px solid black; }
+  .principal img { width: 100%; height: auto; border: 1px solid black; }
+  .texto { font-size: 14px; line-height: 1.5; }
+
+  @media (max-width: 992px) {
+    .contenido {
+      grid-template-columns: 1fr; 
+      grid-template-rows: auto;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 24px;
+    }
+
+    .texto {
+      font-size: 12px;
+    }
+  }
