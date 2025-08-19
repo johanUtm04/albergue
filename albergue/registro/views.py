@@ -77,8 +77,8 @@ def eliminar_paciente(request, id):
     paciente = get_object_or_404(Paciente, id=id)
     if request.method == 'POST':
         paciente.delete()
-        return redirect('lista_pacientes')
-    return render(request, 'registro/eliminarPaciente.html', {'paciente': paciente})
+        return redirect('pacientes')
+    return render(request, 'registro/eliminarPaciente.html', {'object': paciente})
 
 
 
