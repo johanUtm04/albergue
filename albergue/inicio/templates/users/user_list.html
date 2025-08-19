@@ -9,14 +9,16 @@
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}" />
 {% endblock %}
 
+{% block contenido %}
+
 {% block nav %}
 <div class="header">
     <h1> </h1>
     <div class="header-right">
         <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;">PACIENTES</a>
         <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
-        {% if user.is_staff %}
         <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
+        {% if user.is_staff %}
         <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
         <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
         {% endif %}
@@ -24,8 +26,6 @@
     </div>
 </div>
 {% endblock %}
-
-{% block contenido %}
 
 <div class="fade-in">
   <br>
