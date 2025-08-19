@@ -254,7 +254,7 @@ h4 {
     justify-content: flex-end;
 }
 
-.btn-gray, .btn-red, .btn-yellow {
+.btn-gray, .btn-red, .btn-yellow, .btn-cerrar-sesion {
     padding: 10px 25px;
     border: none;
     border-radius: 6px;
@@ -266,11 +266,11 @@ h4 {
 }
 
 .btn-yellow {
-    background-color: #fff836;
+    background-color: #ddcb02;
 }
 
 .btn-yellow:hover {
-    background-color: #ddcb02;
+    background-color: #a5a112;
     transform: translateY(-2px);
 }
 
@@ -291,6 +291,17 @@ h4 {
 
 .btn-red:hover {
     background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-cerrar-sesion {
+    background-color: #34495e; 
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-cerrar-sesion:hover {
+    background-color: #476583;
     transform: translateY(-2px);
 }
 

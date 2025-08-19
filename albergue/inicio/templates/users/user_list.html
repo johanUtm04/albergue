@@ -22,7 +22,7 @@
         <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
         <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
         {% endif %}
-        <a href="{% url 'logout' %}" style="text-decoration:none;">CERRAR SESIÓN</a>
+        <a class="btn-cerrar-sesion" style="color:white;" href="{% url 'logout' %}">CERRAR SESIÓN</a>
     </div>
 </div>
 {% endblock %}
