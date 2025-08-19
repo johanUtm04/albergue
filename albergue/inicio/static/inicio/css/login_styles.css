@@ -664,3 +664,95 @@ footer {
     padding-top: 20px;
     border-top: 2px solid #ccc;
 }
+
+
+
+/* Estilos para el contenedor de la alerta */
+.alerta-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    animation: fadeIn 0.5s ease-in-out; /* Animación de entrada */
+}
+
+/* Estilo para el título de la alerta (la pregunta) */
+.alerta-container h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* Estilos para los detalles del paciente */
+.alerta-container .detalles {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.alerta-container .detalles p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Estilos para los botones de acción */
+.alerta-container .patient-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.alerta-container .btn-red {
+    background-color: #e74c3c; /* Rojo de peligro */
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.alerta-container .btn-red:hover {
+    background-color: #c0392b; /* Rojo más oscuro al pasar el ratón */
+}
+
+.alerta-container .btn-gray {
+    background-color: #bdc3c7; /* Gris neutro */
+    color: #333;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.alerta-container .btn-gray:hover {
+    background-color: #95a5a6;
+}
+
+/* Animación para el cuadro */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

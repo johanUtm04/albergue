@@ -1,4 +1,4 @@
-<title>{% block titulo %} Eliminar medicamento 🧼 {% endblock %}</title>
+<title>{% block titulo %} Eliminar medicamento {% endblock %}</title>
 
 {% load static %}
 
@@ -8,7 +8,7 @@
 
 {% block contenido %}
 
-<div class="fade-in">
+<div class="alerta-container">
     <h2>¿Estás seguro de eliminar "{{ medicamento.nombre }}"?</h2>
 
     <div class="detalles">
@@ -20,7 +20,7 @@
         <p>Proveedor: {{ medicamento.proveedor }}</p>
     </div>
 
-    <form method="post" style="margin-top: 30px;">
+    <form method="post">
         {% csrf_token %}
         <div class="patient-actions">
             <button type="submit" name="Boton eliminar" class="btn-red">Sí, eliminar</button>

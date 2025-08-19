@@ -75,8 +75,10 @@ def editar_paciente(request, id):
 
 def eliminar_paciente(request, id):
     paciente = get_object_or_404(Paciente, id=id)
-    paciente.delete()
-    return redirect('lista_pacientes')
+    if request.method == 'POST':
+        paciente.delete()
+        return redirect('pacientes')
+    return render(request, 'registro/eliminarPaciente.html', {'object': paciente})
 
 
 

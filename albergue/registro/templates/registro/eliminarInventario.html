@@ -1,15 +1,13 @@
-<title>{%block titulo%} eliminar de inventario 🧼 {%endblock%}</title>
+<title>{%block titulo%} Eliminar de inventario {%endblock%}</title>
 
 {% load static %}
-
-
 
 {% block head_extra %}
 <link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
 {% endblock %}
 
-
-
+{% block contenido %}
+<div class="alerta-container">
 <h2>¿Estás seguro de eliminar "{{ object.nombre }}"?</h2>
 
 <div class="detalles">
@@ -25,3 +23,6 @@
         <a href="{% url 'inventario' %}" class="btn-gray">Cancelar</a>
     </div>
 </form>
+</div>
+
+{% endblock %}
