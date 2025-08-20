@@ -10,7 +10,7 @@
 
 {% block nav %}
 <div class="header">
-    <h1> </h1>
+    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span></h1>
     <div class="header-right">
         <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;">PACIENTES</a>
         <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
@@ -48,18 +48,22 @@
     <div class="requests-list">
     {% if solicitudes %}
         {% for solicitud in solicitudes %}
-        <div class="request-card">
-            <h3>{{ solicitud.tipo_recurso.nombre }}</h3>
-            <p><strong>Cantidad:</strong> {{ solicitud.cantidad }}</p>
-            <p><strong>Estado:</strong> {{ solicitud.estado }}</p>
-            <p><strong>Paciente:</strong> {{ solicitud.paciente.nombre }}</p>
+        <div class="request-card" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="flex-grow: 1;">
+                <h3>{{ solicitud.tipo_recurso.nombre }}</h3>
+                <p><strong>Cantidad:</strong> {{ solicitud.cantidad }}</p>
+                <p><strong>Estado:</strong> {{ solicitud.estado }}</p>
+                <p><strong>Paciente:</strong> {{ solicitud.paciente.nombre }}</p>
+            </div>
+            <a href="{% url 'eliminar_solicitud' solicitud.id %}" class="btn-red" data-no-anim>
+                <i class="fas fa-trash"></i> ELIMINAR
+            </a>
         </div>
         {% endfor %}
     {% else %}
         <p class="no-results">No hay solicitudes.</p>
     {% endif %}
     </div>
-
 </div>
 
 <script>

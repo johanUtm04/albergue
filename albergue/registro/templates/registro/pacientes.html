@@ -10,8 +10,7 @@
 
 {% block nav %}
 <div class="header">
-    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span>
-    </h1> 
+    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span></h1> 
     <div class="header-right">
     <a href="{% url 'lista_pacientes' %}" 
     class="{% if request.resolver_match.url_name == 'lista_pacientes' %}active{% endif %}"
@@ -33,10 +32,9 @@
 {% endblock %}
 
 <div class="fade-in"> 
-    <h2>Bienvenido, Médico <br> Gestión de Pacientes</h2>
+    <h2>Gestión de Pacientes</h2>
 
     <div class="search-and-button">
-        <input type="text" class="search-bar" placeholder="Buscar">
         <a href="{% url 'crear_paciente' %}" class="btn-black">REGISTRAR NUEVO PACIENTE</a>
     </div>
 

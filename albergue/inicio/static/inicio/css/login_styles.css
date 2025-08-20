@@ -295,21 +295,13 @@ h4 {
 }
 
 .btn-red {
-    background-color: #ad0000;
-    color: #ffffff;
-    padding: 10px 18px;
-    border-radius: 5px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    border: none;
-    text-decoration: none;
+    background-color: #e74c3c; 
+    color: #fff;
 }
 
 .btn-red:hover {
-    background-color: #ff7878;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+    background-color: #c0392b;
+    transform: translateY(-2px);
 }
 
 .btn-cerrar-sesion {
@@ -648,15 +640,14 @@ select, textarea {
 .main-content-wrapper {
     max-width: 1200px; 
     margin: 0 auto;
-    padding: 20px;
 }
 
 footer {
-    background-color: #33333311;
     color: #000000;
-    padding: 40px 20px;
+    padding: 50px 0;
     text-align: center;
     width: 100%;
+    border-top: 2px solid #ccc;
 }
 
 .footer-container {
@@ -670,18 +661,21 @@ footer {
 
 .footer-section {
     flex: 1;
+    min-width: 250px;
+    margin: 10px;
 }
 
 .footer-section h4 {
     margin-bottom: 15px;
     font-weight: bold;
     color: #34495e;
+    font-size: 1.2em;
 }
 
 .social-icons a {
     color: #000000;
     margin: 0 10px;
-    font-size: 1.5em;
+    font-size: 1.6em;
     transition: color 0.3s ease;
 }
 
@@ -693,9 +687,8 @@ footer {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 2px solid #ccc;
+    text-align: center;
 }
-
-
 
 /* Estilos para el contenedor de la alerta */
 .alerta-container {
@@ -708,10 +701,9 @@ footer {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-family: Arial, sans-serif;
-    animation: fadeIn 0.5s ease-in-out; /* Animación de entrada */
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Estilo para el título de la alerta (la pregunta) */
 .alerta-container h2 {
     color: #333;
     font-size: 24px;
@@ -720,7 +712,6 @@ footer {
     padding-bottom: 15px;
 }
 
-/* Estilos para los detalles del paciente */
 .alerta-container .detalles {
     background-color: #f9f9f9;
     border: 1px solid #eee;
@@ -735,7 +726,6 @@ footer {
     font-size: 16px;
 }
 
-/* Estilos para los botones de acción */
 .alerta-container .patient-actions {
     display: flex;
     justify-content: center;
@@ -756,11 +746,11 @@ footer {
 }
 
 .alerta-container .btn-red:hover {
-    background-color: #c0392b; /* Rojo más oscuro al pasar el ratón */
+    background-color: #c0392b; 
 }
 
 .alerta-container .btn-gray {
-    background-color: #bdc3c7; /* Gris neutro */
+    background-color: #bdc3c7;
     color: #333;
     border: none;
     padding: 12px 25px;
@@ -775,7 +765,6 @@ footer {
     background-color: #95a5a6;
 }
 
-/* Animación para el cuadro */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -787,11 +776,10 @@ footer {
     }
 }
 
-
 .header-right a.active {
     font-weight: bold;
-    color: red; /* o el color que prefieras */
-    border-bottom: 2px solid red;
+    color: #34495e;
+    border-bottom: 2px solid #34495e;
 }
 
 .nombre-usuario{
@@ -800,4 +788,22 @@ footer {
     background: linear-gradient();
     padding: 4px 10px;
     border-radius: 8px;
+}
+
+/* Estilos para la card de alerta por baja cantidad */
+.patient-card.alerta-baja {
+    border: 2px solid #e74c3c;
+    background-color: #fcebeb;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+    transition: all 0.3s ease;
+}
+
+.patient-card.alerta-baja:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+}
+
+.patient-card.alerta-baja h3,
+.patient-card.alerta-baja p {
+    color: #c0392b;
 }

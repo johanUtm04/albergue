@@ -78,7 +78,7 @@ def eliminar_paciente(request, id):
     if request.method == 'POST':
         paciente.delete()
         return redirect('pacientes')
-    return render(request, 'registro/eliminarPaciente.html', {'object': paciente})
+    return render(request, 'registro/eliminarPaciente.html', {'paciente': paciente})
 
 
 
@@ -136,6 +136,16 @@ def registrar_tipo(request):
         return redirect('lista_tipos')
     return render(request, 'registro/registrar_tipo.html', {'form': form})
 
+def eliminar_tipo(request, tipo_id):
+    tipo = get_object_or_404(TipoRecursoNoMedico, id=tipo_id)
+    if request.method == 'POST':
+        tipo.delete()
+        return redirect('lista_tipos')
+    return render(request, 'registro/eliminarTipo.html', {'tipo': tipo})
+
+
+#SOLICITUDES
+
 def lista_solicitudes(request):
     solicitudes = SolicitudRecursoNoMedico.objects.all()
     estado = request.GET.get('estado')
@@ -149,3 +159,11 @@ def registrar_solicitud(request):
         form.save()
         return redirect('lista_solicitudes')
     return render(request, 'registro/registrar_solicitud.html', {'form': form})
+
+def eliminar_solicitud(request, solicitud_id):
+    solicitud = get_object_or_404(SolicitudRecursoNoMedico, id=solicitud_id)
+    if request.method == 'POST':
+        solicitud.delete()
+        return redirect('lista_solicitudes') 
+    return render(request, 'registro/eliminarSolicitud.html', {'solicitud': solicitud})
+

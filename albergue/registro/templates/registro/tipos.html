@@ -10,8 +10,7 @@
 
 {% block nav %}
 <div class="header">
-    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span>
-    </h1> 
+    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span></h1> 
     <div class="header-right">
         <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;">PACIENTES</a>
         <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
@@ -35,14 +34,17 @@
     </div>
 
     <ul style="list-style-type: none; padding-left: 0;">
-      {% for tipo in tipos %}
-        <li class="patient-card" style="padding: 12px 15px; margin-bottom: 8px; border-radius: 8px; background-color: #f9f9f9;">
-          {{ tipo.nombre }}
+        {% for tipo in tipos %}
+        <li class="patient-card" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; margin-bottom: 8px; border-radius: 8px; background-color: #f9f9f9;">
+            {{ tipo.nombre }}
+            <a href="{% url 'eliminar_tipo' tipo.id %}" class="btn-red">
+                <i class="fas fa-trash"></i> ELIMINAR </a>
         </li>
-      {% empty %}
+        {% empty %}
         <li>No hay tipos registrados.</li>
-      {% endfor %}
+        {% endfor %}
     </ul>
+
 
     <div style="margin-top: 30px;">
       <a href="{% url 'lista_solicitudes' %}" class="btn-yellow">Ver solicitudes</a>

@@ -8,16 +8,12 @@
 
 {% block nav %}
 <div class="header">
-    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span>
-    </h1> 
+    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span></h1> 
     <div class="header-right">
-        <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;"
-        >PACIENTES</a>
+        <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;">PACIENTES</a>
         <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
         {% if user.is_staff %}
-        <a href="{% url 'inventario' %}" style="text-decoration:none;"
-        class="{% if request.resolver_match.url_name == 'inventario' %}active{% endif %}"
-        >INVENTARIO</a>
+        <a href="{% url 'inventario' %}" style="text-decoration:none;"class="{% if request.resolver_match.url_name == 'inventario' %}active{% endif %}">INVENTARIO</a>
         <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
         <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
         {% endif %}
@@ -33,24 +29,24 @@
     <div class="search-and-button">
         <a href="{% url 'registrarInventario' %}" class="btn-black">REGISTRAR PRODUCTO</a>
     </div>
+    <br><br>
 
     {% for item in inventarios %}
-    <div class="patient-card">
-        <div class="patient-content">
-            <h3>{{ item.nombre }}</h3>
-            <p>Cantidad: {{ item.cantidad }}</p>
-            <p>Fecha de reabastecimiento: {{ item.fecha_reabastecimiento }}</p>
-            <p>Descripción: {{ item.descripcion }}</p>
-
-            <div class="patient-actions">
-                <a href="{% url 'detalleInventario' item.id %}" class="btn-yellow">VER DETALLE</a>
-                <a href="{% url 'editarInventario' item.id %}" class="btn-gray">EDITAR</a>
-                <a href="{% url 'eliminarInventario' item.id %}" class="btn-red">ELIMINAR</a>
-            </div>
+<div class="patient-card {% if item.cantidad <= 5 %}alerta-baja{% endif %}">
+    <div class="patient-content">
+        <h3>{{ item.nombre }}</h3>
+        <p>Cantidad: {{ item.cantidad }}</p>
+        <p>Fecha de reabastecimiento: {{ item.fecha_reabastecimiento }}</p>
+        <p>Descripción: {{ item.descripcion }}</p>
+        <div class="patient-actions">
+            <a href="{% url 'detalleInventario' item.id %}" class="btn-yellow">VER DETALLE</a>
+            <a href="{% url 'editarInventario' item.id %}" class="btn-gray">EDITAR</a>
+            <a href="{% url 'eliminarInventario' item.id %}" class="btn-red">ELIMINAR</a>
         </div>
     </div>
-    {% empty %}
-    <p>No hay productos en el inventario.</p>
-    {% endfor %}
+</div>
+{% empty %}
+<p>No hay productos en el inventario.</p>
+{% endfor %}
 </div>
 {% endblock %}

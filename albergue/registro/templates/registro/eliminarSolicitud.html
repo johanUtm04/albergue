@@ -1,0 +1,29 @@
+<title>{% block titulo %} Eliminar solicitud {% endblock %}</title>
+
+{% load static %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div class="alerta-container">
+    <h2>¿Estás seguro de eliminar esta solicitud?</h2>
+
+    <div class="detalles">
+        <p>Nombre: {{ solicitud.tipo_recurso.nombre }}</p>
+        <p>Cantidad: {{ solicitud.cantidad }}</p>
+        <p>Estado: {{ solicitud.estado }}</p>
+        <p>Paciente: {{ solicitud.paciente.nombre}}</p>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="patient-actions">
+            <button type="submit" name="Boton eliminar" class="btn-red">Sí, eliminar</button>
+            <a href="{% url 'lista_solicitudes' %}" class="btn-gray">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

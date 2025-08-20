@@ -50,8 +50,15 @@ urlpatterns = [
     #Tipos de recursos
     path('tipos/', views_registro.lista_tipos, name='lista_tipos'),
     path('tipos/nuevo/', views_registro.registrar_tipo, name='registrar_tipo'),
+    path('eliminar_tipo/<int:tipo_id>/', views_registro.eliminar_tipo, name='eliminar_tipo'),
+
+    
+    #Solicitudes
     path('solicitudes/', views_registro.lista_solicitudes, name='lista_solicitudes'),
     path('solicitudes/nueva/', views_registro.registrar_solicitud, name='registrar_solicitud'),
+    path('eliminar_solicitud/<int:solicitud_id>/', views_registro.eliminar_solicitud, name='eliminar_solicitud'),
+
+
 
 ]
 
