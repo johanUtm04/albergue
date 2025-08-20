@@ -33,8 +33,8 @@ urlpatterns = [
     path('lista/', views_registro.lista_pacientes, name='lista_pacientes'),
     path('nuevo/', views_registro.crear_paciente, name='crear_paciente'),
     path('<int:id>/', views_registro.detalle_paciente, name='detalle_paciente'),
-    path('<int:id>/editar/', views_registro.editar_paciente, name='editar_paciente'),
-    path('<int:id>/eliminar/', views_registro.eliminar_paciente, name='eliminar_paciente'),
+    path('editar_paciente/<int:id>/', views_registro.editar_paciente, name='editar_paciente'),
+    path('eliminar_paciente/eliminar/<int:id>/', views_registro.eliminar_paciente, name='eliminar_paciente'),
 
 
 
@@ -43,7 +43,6 @@ urlpatterns = [
     path('users/create/', views_users.user_create, name='user_create'),
     path('users/edit/<int:id>/', views_users.user_edit, name='user_edit'),
     path('users/delete/<int:id>/', views_users.user_delete, name='user_delete'),
-    path('medicamentos/eliminar/<int:id>/', views_registro.eliminar_recursoMedico, name='eliminar_emedicamento'),
     path('logout/', views.logout_view, name='logout'),
 
 
@@ -56,7 +55,7 @@ urlpatterns = [
     #Solicitudes
     path('solicitudes/', views_registro.lista_solicitudes, name='lista_solicitudes'),
     path('solicitudes/nueva/', views_registro.registrar_solicitud, name='registrar_solicitud'),
-    path('eliminar_solicitud/<int:solicitud_id>/', views_registro.eliminar_solicitud, name='eliminar_solicitud'),
+    path('eliminar_solicitud/eliminar/<int:id>/', views_registro.eliminar_solicitud, name='eliminar_solicitud'),
 
 
 
