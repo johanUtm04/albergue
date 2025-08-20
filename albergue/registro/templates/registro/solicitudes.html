@@ -29,7 +29,7 @@
     <h2>Solicitudes de Recursos No Médicos</h2>
 
     <div class="header-actions">
-        <form method="get" class="filter-section">
+        <form method="get" class="filter-section"> <br>
             <label for="estado" class="filter-label">Filtrar por estado:</label>
             <select name="estado" id="estado" class="search-bar">
                 <option value="" {% if not request.GET.estado %}selected{% endif %}>Todos</option>
@@ -38,7 +38,8 @@
                 <option value="Entregado" {% if request.GET.estado == "Entregado" %}selected{% endif %}>Entregado</option>
                 <option value="Cancelado" {% if request.GET.estado == "Cancelado" %}selected{% endif %}>Cancelado</option>
             </select>
-            <button type="submit" name="Boton filtrar" class="btn-black">Filtrar</button>
+            <br>
+            <button type="submit" name="Boton filtrar" class="btn-black">Filtrar</button> <br>
         </form>
         <a href="{% url 'registrar_solicitud' %}" class="btn-black">Nueva solicitud</a>
         <a href="{% url 'lista_tipos' %}" class="btn-yellow">Regresar a tipos de solicitudes</a>

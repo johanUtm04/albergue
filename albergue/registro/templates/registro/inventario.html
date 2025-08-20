@@ -37,7 +37,6 @@
         <h3>{{ item.nombre }}</h3>
         <p>Cantidad: {{ item.cantidad }}</p>
         <p>Fecha de reabastecimiento: {{ item.fecha_reabastecimiento }}</p>
-        <p>Descripción: {{ item.descripcion }}</p>
         <div class="patient-actions">
             <a href="{% url 'detalleInventario' item.id %}" class="btn-yellow">VER DETALLE</a>
             <a href="{% url 'editarInventario' item.id %}" class="btn-gray">EDITAR</a>

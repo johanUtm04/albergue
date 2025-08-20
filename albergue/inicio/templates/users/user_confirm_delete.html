@@ -1,15 +1,28 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+<title>{% block titulo %} Eliminar usuario {% endblock %}</title>
 
-<div class="fade-in">
-  <h2>Eliminar usuario</h2>
-  <p>¿Estás seguro que quieres eliminar a <strong>{{ user.username }}</strong>?</p>
+{% load static %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'inicio/css/login_styles.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div class="alerta-container">
+  <h2>¿Estás seguro que quieres eliminar a <strong>{{ user.username }}</strong>?</h2>
+
+  <div class="detalles">
+        <p>Correo: {{ user.email }}</p> <br>
+        <p>Staff: {{ user.is_staff }}</p>
+    </div>
   <form method="post">
-      {% csrf_token %}
-      <button name="Boton eliminar" type="submit" class="btn-red">Eliminar</button>
-      <a href="{% url 'user_list' %}" class="btn-gray" style="margin-left: 10px; padding: 10px 15px; border-radius: 10px;">Cancelar</a>
+    {% csrf_token %}
+    <div class="patient-actions">
+      <button name="Boton eliminar" type="submit" class="btn-red">Sí, eliminar</button>
+      <a href="{% url 'user_list' %}" class="btn-gray">Cancelar</a>
+    </div>
   </form>
 </div>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,3 +42,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+{% endblock %}
