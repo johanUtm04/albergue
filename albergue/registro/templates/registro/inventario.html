@@ -8,7 +8,8 @@
 
 {% block nav %}
 <div class="header">
-    <h1> </h1>
+    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span>
+    </h1> 
     <div class="header-right">
         <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;"
         >PACIENTES</a>
