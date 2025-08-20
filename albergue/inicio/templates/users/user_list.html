@@ -20,7 +20,9 @@
         <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
         {% if user.is_staff %}
         <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
-        <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
+        <a href="{% url 'user_list' %}"
+        class="{% if request.resolver_match.url_name == 'user_list' %}active{% endif %}"}
+        style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
         {% endif %}
         <a class="btn-cerrar-sesion" style="color:white;" href="{% url 'logout' %}">CERRAR SESIÓN</a>
     </div>

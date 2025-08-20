@@ -16,7 +16,9 @@
         <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
         {% if user.is_staff %}
         <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
-        <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
+        <a href="{% url 'lista_tipos' %}" 
+        class="{% if request.resolver_match.url_name == 'lista_tipos' %}active{% endif %}"}
+        style="text-decoration:none;">RECURSOS NO MEDICOS </a>
         <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>
         <a class="btn-cerrar-sesion" style="color:white;" href="{% url 'logout' %}">CERRAR SESIÓN</a>
         {% endif %}

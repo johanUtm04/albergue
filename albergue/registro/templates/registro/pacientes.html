@@ -10,11 +10,19 @@
 
 {% block nav %}
 <div class="header">
-    <h1> </h1> 
+    <h1>Bienvenido<span class="nombre-usuario">{{ request.user.first_name|default:request.user.username }}!</span>
+    </h1> 
     <div class="header-right">
-        <a href="{% url 'lista_pacientes' %}" style="text-decoration:none;">PACIENTES</a>
-        <a href="{% url 'medicamentos' %}" style="text-decoration:none;">MEDICAMENTOS</a>
-        {% if user.is_staff %}
+    <a href="{% url 'lista_pacientes' %}" 
+    class="{% if request.resolver_match.url_name == 'lista_pacientes' %}active{% endif %}"
+    style="text-decoration:none;"
+    title="Ver lista de pacientes..."
+    >
+    PACIENTES
+    </a>
+        <a href="{% url 'medicamentos' %}"
+        style="text-decoration:none;">MEDICAMENTOS</a>
+        {% if user.is_staff  %}
         <a href="{% url 'inventario' %}" style="text-decoration:none;">INVENTARIO</a>
         <a href="{% url 'lista_tipos' %}" style="text-decoration:none;">RECURSOS NO MEDICOS </a>
         <a href="{% url 'user_list' %}" style="text-decoration:none;">ADMINISTRAR USUARIOS</a>

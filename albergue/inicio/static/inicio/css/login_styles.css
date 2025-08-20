@@ -44,6 +44,7 @@ html, body {
     font-weight: bold;
     margin-bottom: 10px;
     color: #333;
+    cursor: pointer;
 }
 
 .login-subtitle {
@@ -220,6 +221,15 @@ h4 {
     font-weight: 500;
 }
 
+.header-right li {
+    display: flex;/* Hacemos flexible el div */
+    margin-right: 15px; /* margen superior */
+}
+.header-right li.active a {
+  font-weight: bold;
+  color: red;
+  border-bottom: 2px solid red;
+}
 .patient-card {
     background-color: #fff;
     border: 1px solid #e0e0e0;
@@ -254,7 +264,7 @@ h4 {
     justify-content: flex-end;
 }
 
-.btn-gray, .btn-red, .btn-yellow, .btn-cerrar-sesion {
+.btn-gray, .btn-red, .btn-black, .btn-yellow, .btn-cerrar-sesion {
     padding: 10px 25px;
     border: none;
     border-radius: 6px;
@@ -285,13 +295,21 @@ h4 {
 }
 
 .btn-red {
-    background-color: #e74c3c; 
-    color: #fff;
+    background-color: #ad0000;
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: none;
+    text-decoration: none;
 }
 
 .btn-red:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
+    background-color: #ff7878;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .btn-cerrar-sesion {
@@ -318,11 +336,12 @@ h4 {
 
 .btn-black:hover {
     background-color: #2a2a2a;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
-a.btn-red,
+
 a.btn-gray,
 a.btn-yellow {
     color: rgb(0, 0, 0) !important; 
@@ -724,7 +743,7 @@ footer {
 }
 
 .alerta-container .btn-red {
-    background-color: #e74c3c; /* Rojo de peligro */
+    background-color: #e74c3c;
     color: #fff;
     border: none;
     padding: 12px 25px;
@@ -766,4 +785,19 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+.header-right a.active {
+    font-weight: bold;
+    color: red; /* o el color que prefieras */
+    border-bottom: 2px solid red;
+}
+
+.nombre-usuario{
+    font-weight: bold;
+    color: #12457c;
+    background: linear-gradient();
+    padding: 4px 10px;
+    border-radius: 8px;
 }
